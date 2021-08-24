@@ -1,14 +1,16 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    siteUrl: `https://cafe-366.myshopify.com`,
   },
-  // plugins: [
-  //   {
-  //     resolve: `gatsby-source-shopify`,
-  //     options: {
-  //       storeUrl: `cafe-366.myshopify.com`,
-  //       password: `xxxxxxxxxxxx`,
-  //     },
-  //   },
-  // ],
+  plugins: [
+    {
+      resolve: `gatsby-source-shopify`,
+      options: {
+        apiKey: process.env.SHOPIFY_API_KEY,
+        password: process.env.SHOPIFY_SHOP_PASSWORD,
+        storeUrl: process.env.GATSBY_SHOPIFY_STORE_URL,
+        shopifyConnections: ["collections"],
+      },
+    },
+  ],
 };
