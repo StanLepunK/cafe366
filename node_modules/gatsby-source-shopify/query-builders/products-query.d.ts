@@ -1,0 +1,4 @@
+import { BulkQuery } from "./bulk-query";
+export declare class ProductsQuery extends BulkQuery {
+    query(date?: Date): string;
+}

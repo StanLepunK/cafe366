@@ -1,0 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getShopifyImage = void 0;
+var get_shopify_image_1 = require("./get-shopify-image");
+Object.defineProperty(exports, "getShopifyImage", { enumerable: true, get: function () { return get_shopify_image_1.getShopifyImage; } });
+//# sourceMappingURL=index.js.map

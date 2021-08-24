@@ -1,0 +1,8 @@
+import { IGatsbyImageData, ImageFormat } from "gatsby-plugin-image";
+import { IShopifyImage } from "./get-shopify-image";
+declare type ImageLayout = "constrained" | "fixed" | "fullWidth";
+export declare function makeResolveGatsbyImageData(cache: any): (image: Node & IShopifyImage, { formats, layout, ...options }: {
+    formats: Array<ImageFormat>;
+    layout: ImageLayout;
+}) => Promise<IGatsbyImageData>;
+export {};

@@ -1,0 +1,15 @@
+import { Response } from "node-fetch";
+export declare const pluginErrorCodes: {
+    bulkOperationFailed: string;
+    unknownSourcingFailure: string;
+    unknownApiError: string;
+    apiConflict: string;
+};
+export declare class OperationError extends Error {
+    node: BulkOperationNode;
+    constructor(node: BulkOperationNode);
+}
+export declare class HttpError extends Error {
+    response: Response;
+    constructor(response: Response);
+}

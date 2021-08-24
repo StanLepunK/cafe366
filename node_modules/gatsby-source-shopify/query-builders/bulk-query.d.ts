@@ -1,0 +1,6 @@
+export declare abstract class BulkQuery {
+    pluginOptions: ShopifyPluginOptions;
+    constructor(pluginOptions: ShopifyPluginOptions);
+    abstract query(date?: Date): string;
+    protected bulkOperationQuery(query: string): string;
+}

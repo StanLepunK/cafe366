@@ -1,0 +1,1 @@
+{"version":3,"file":"bulk-query.js","sourceRoot":"","sources":["../src/query-builders/bulk-query.ts"],"names":[],"mappings":";;;AAAA,MAAsB,SAAS;IAG7B,YAAY,aAAmC;QAC7C,IAAI,CAAC,aAAa,GAAG,aAAa,CAAA;IACpC,CAAC;IAIS,kBAAkB,CAAC,KAAa;QACxC,OAAO;;;;YAIC,KAAK;;;;;;;;;;;;;KAaZ,CAAA;IACH,CAAC;CACF;AA7BD,8BA6BC"}

@@ -1,0 +1,51 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CANCEL_OPERATION = exports.OPERATION_BY_ID = exports.OPERATION_STATUS_QUERY = void 0;
+exports.OPERATION_STATUS_QUERY = `
+  query OPERATION_STATUS {
+    currentBulkOperation {
+      id
+      status
+      errorCode
+      createdAt
+      completedAt
+      objectCount
+      fileSize
+      url
+      partialDataUrl
+      query
+    }
+  }
+`;
+exports.OPERATION_BY_ID = `
+  query OPERATION_BY_ID($id: ID!) {
+    node(id: $id) {
+      ... on BulkOperation {
+        id
+        status
+        errorCode
+        createdAt
+        completedAt
+        objectCount
+        fileSize
+        url
+        partialDataUrl
+        query
+      }
+    }
+  }
+  `;
+exports.CANCEL_OPERATION = `
+  mutation CANCEL_OPERATION($id: ID!) {
+    bulkOperationCancel(id: $id) {
+      bulkOperation {
+        status
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }
+  `;
+//# sourceMappingURL=static-queries.js.map

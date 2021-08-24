@@ -1,0 +1,30 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BulkQuery = void 0;
+class BulkQuery {
+    constructor(pluginOptions) {
+        this.pluginOptions = pluginOptions;
+    }
+    bulkOperationQuery(query) {
+        return `
+      mutation INITIATE_BULK_OPERATION {
+        bulkOperationRunQuery(
+        query: """
+          ${query}
+        """
+      ) {
+        bulkOperation {
+          id
+          status
+        }
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+    `;
+    }
+}
+exports.BulkQuery = BulkQuery;
+//# sourceMappingURL=bulk-query.js.map
