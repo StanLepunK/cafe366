@@ -1,4 +1,0 @@
-import { BulkQuery } from "./bulk-query";
-export declare class OrdersQuery extends BulkQuery {
-    query(date?: Date): string;
-}

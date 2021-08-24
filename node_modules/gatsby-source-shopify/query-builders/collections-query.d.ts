@@ -1,4 +1,0 @@
-import { BulkQuery } from "./bulk-query";
-export declare class CollectionsQuery extends BulkQuery {
-    query(date?: Date): string;
-}
