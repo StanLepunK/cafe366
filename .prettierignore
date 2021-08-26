@@ -1,4 +1,6 @@
 .cache
-package.json
-package-lock.json
 public
+static
+node_modules
+.vscode
+.idea
