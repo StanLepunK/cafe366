@@ -1,8 +1,10 @@
 import * as React from "react"
+// gatsby
 import { graphql, Link } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getShopifyImage } from "gatsby-source-shopify"
-import { formatPrice } from "../utils/format-price"
+// app
+import { formatPrice } from "../utils/format_price"
 import {
   productCardStyle,
   productHeadingStyle,
@@ -10,7 +12,7 @@ import {
   productDetailsStyle,
   productVendorStyle,
   productPrice,
-} from "./product-card.module.css"
+} from "./product_card.module.css"
 
 export function ProductCard({ product, eager }) {
   const {
@@ -44,7 +46,8 @@ export function ProductCard({ product, eager }) {
     }
   }
 
-  const hasImage = firstImage || Object.getOwnPropertyNames(storefrontImageData || {}).length
+  const hasImage =
+    firstImage || Object.getOwnPropertyNames(storefrontImageData || {}).length
 
   return (
     <Link
@@ -52,19 +55,17 @@ export function ProductCard({ product, eager }) {
       to={slug}
       aria-label={`View ${title} product page`}
     >
-      {hasImage
-        ? (
-          <div className={productImageStyle} data-name="product-image-box">
-            <GatsbyImage
-              alt={firstImage?.altText ?? title}
-              image={firstImage?.gatsbyImageData ?? storefrontImageData}
-              loading={eager ? "eager" : "lazy"}
-            />
-          </div>
-        ) : (
-          <div style={{ height: defaultImageHeight, width: defaultImageWidth }} />
-        )
-      }
+      {hasImage ? (
+        <div className={productImageStyle} data-name="product-image-box">
+          <GatsbyImage
+            alt={firstImage?.altText ?? title}
+            image={firstImage?.gatsbyImageData ?? storefrontImageData}
+            loading={eager ? "eager" : "lazy"}
+          />
+        </div>
+      ) : (
+        <div style={{ height: defaultImageHeight, width: defaultImageWidth }} />
+      )}
       <div className={productDetailsStyle}>
         <div className={productVendorStyle}>{vendor}</div>
         <h2 as="h2" className={productHeadingStyle}>

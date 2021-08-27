@@ -1,6 +1,8 @@
 import * as React from "react"
 import { MdArrowDropDown, MdArrowDropUp } from "react-icons/md"
-import { wrap, increment, decrement, input } from "./numeric-input.module.css"
+// app
+import { wrap, increment, decrement, input } from "./numeric_input.module.css"
+
 export function NumericInput({
   onIncrement,
   onDecrement,

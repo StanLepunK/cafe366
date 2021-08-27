@@ -1,26 +1,26 @@
+// react
 import * as React from "react"
+// mist
 import debounce from "lodash.debounce"
-import { StoreContext } from "../context/store-context"
-import { formatPrice } from "../utils/format-price"
+// gatsby
 import { GatsbyImage } from "gatsby-plugin-image"
 import { getShopifyImage } from "gatsby-source-shopify"
+// app
+import { StoreContext } from "../context/store_context"
+import { formatPrice } from "../utils/format_price"
 import DeleteIcon from "../icons/delete"
-import { NumericInput } from "./numeric-input"
+import { NumericInput } from "./numeric_input"
 import {
   title,
   remove,
   variant,
   totals,
   priceColumn,
-} from "./line-item.module.css"
+} from "./line_item.module.css"
 
 export function LineItem({ item }) {
-  const {
-    removeLineItem,
-    checkout,
-    updateLineItem,
-    loading,
-  } = React.useContext(StoreContext)
+  const { removeLineItem, checkout, updateLineItem, loading } =
+    React.useContext(StoreContext)
   const [quantity, setQuantity] = React.useState(item.quantity)
 
   const variantImage = {

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Helmet } from "react-helmet"
+// gatsby
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
@@ -85,10 +86,7 @@ export function Seo({
       />
       {/* The following meta tag is for demonstration only and can be removed */}
       {!!process.env.GATSBY_DEMO_STORE && (
-        <meta
-          name="robots"
-          content="noindex, nofollow"
-        />
+        <meta name="robots" content="noindex, nofollow" />
       )}
       {children}
     </Helmet>

@@ -5,7 +5,7 @@ import {
   currencySymbol,
   wrap,
   symbolAfter,
-} from "./currency-field.module.css"
+} from "./currency_field.module.css"
 
 export function CurrencyField({
   symbol,

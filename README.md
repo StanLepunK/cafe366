@@ -4,9 +4,14 @@ Boutique en ligne
 
 The last guide
 
-https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-shopify#getting-started
+https://github.com/gatsbyjs/gatsby-starter-shopify
 
 https://youtu.be/58OD42jyF4o?t=445
+
+updating cart problem... the video talk about that at this moment
+https://youtu.be/58OD42jyF4o?t=1986
+
+https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-shopify#getting-started
 
 Old guide :
 

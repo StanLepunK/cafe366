@@ -1,10 +1,13 @@
 import * as React from "react"
+// gatsby
 import { graphql } from "gatsby"
-import { Layout } from "../../../components/layout"
-import { ProductListing } from "../../../components/product-listing"
-import { Seo } from "../../../components/seo"
+
 import slugify from "@sindresorhus/slugify"
-import { MoreButton } from "../../../components/more-button"
+// app
+import { Layout } from "../../../components/layout"
+import { ProductListing } from "../../../components/product_listing"
+import { Seo } from "../../../components/seo"
+import { MoreButton } from "../../../components/more_button"
 import { title } from "../index.module.css"
 
 export default function ProductTypeIndex({
@@ -26,7 +29,7 @@ export default function ProductTypeIndex({
 }
 
 export const query = graphql`
-  query($productType: String!) {
+  query ($productType: String!) {
     products: allShopifyProduct(
       filter: { productType: { eq: $productType } }
       sort: { fields: publishedAt, order: ASC }

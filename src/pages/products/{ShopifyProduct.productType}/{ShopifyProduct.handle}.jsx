@@ -1,13 +1,17 @@
 import * as React from "react"
-import { graphql, Link } from "gatsby"
-import { Layout } from "../../../components/layout"
-import isEqual from "lodash.isequal"
+// gatsby
 import { GatsbyImage, getSrc } from "gatsby-plugin-image"
-import { StoreContext } from "../../../context/store-context"
-import { AddToCart } from "../../../components/add-to-cart"
-import { NumericInput } from "../../../components/numeric-input"
-import { formatPrice } from "../../../utils/format-price"
+import { graphql, Link } from "gatsby"
+
+import isEqual from "lodash.isequal"
+// app
+import { Layout } from "../../../components/layout"
+import { StoreContext } from "../../../context/store_context"
+import { AddToCart } from "../../../components/add_to_cart"
+import { NumericInput } from "../../../components/numeric_input"
+import { formatPrice } from "../../../utils/format_price"
 import { Seo } from "../../../components/seo"
+
 import { CgChevronRight as ChevronIcon } from "react-icons/cg"
 import {
   productBox,
@@ -27,7 +31,7 @@ import {
   addToCartStyle,
   metaSection,
   productDescription,
-} from "./product-page.module.css"
+} from "./product_page.module.css"
 
 export default function Product({ data: { product, suggestions } }) {
   const {
@@ -215,7 +219,7 @@ export default function Product({ data: { product, suggestions } }) {
 }
 
 export const query = graphql`
-  query($id: String!, $productType: String!) {
+  query ($id: String!, $productType: String!) {
     product: shopifyProduct(id: { eq: $id }) {
       title
       description

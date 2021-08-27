@@ -1,6 +1,7 @@
 import * as React from "react"
-import { ProductCard } from "./product-card"
-import { listingContainerStyle } from "./product-listing.module.css"
+// app
+import { ProductCard } from "./product_card"
+import { listingContainerStyle } from "./product_listing.module.css"
 
 // To optimize LCP we mark the first product card as eager so the image gets loaded faster
 export function ProductListing({ products = [] }) {

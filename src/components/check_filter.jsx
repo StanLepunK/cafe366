@@ -6,7 +6,7 @@ import {
   clearButton,
   selectedLabel,
   checkbox,
-} from "./check-filter.module.css"
+} from "./check_filter.module.css"
 
 export function CheckFilter({
   items,
