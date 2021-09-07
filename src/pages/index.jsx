@@ -1,16 +1,18 @@
-import * as React from "react"
+import * as React from "react";
 // gatsby
-import { graphql } from "gatsby"
+import { graphql } from "gatsby";
 // app
-import { Layout } from "../components/layout"
-import { ProductListing } from "../components/product_listing"
+import { Layout } from "../components/layout";
+import { ProductListing } from "../components/product_listing";
 import {
   container,
   intro,
   callOut,
   callToAction,
   deployButton,
-} from "./index.module.css"
+} from "./index.module.css";
+import describe from "../../media/json/describe.json";
+import { get_lang, find_lang } from "../utils/misc";
 
 export const query = graphql`
   query {
@@ -20,40 +22,36 @@ export const query = graphql`
       }
     }
   }
-`
-function Hero(props) {
+`;
+
+function Introduction() {
+  let txt_intro = "";
+
+  if (get_lang() === "fr") {
+    txt_intro = find_lang(describe.describe, "introduction", "fr");
+    // txt_intro = describe.describe[0].label_fr;
+  } else {
+    txt_intro = find_lang(describe.describe, "introduction", "en");
+    //txt_intro = describe.describe[0].label_en;
+  }
+
   return (
     <div className={container}>
-      <h1 className={intro}>Welcome to the GatsbyJS + Shopify Demo Store.</h1>
-      {!!process.env.GATSBY_DEMO_STORE && (
-        <>
-          <p className={callOut}>
-            It's a proof-of-concept in a box, with 10k products and 30k variants
-            to help you get to proof-of-concept as soon as right now.
-          </p>
-          <p className={callToAction}>
-            Hook it up to your own Shopify store data and start customizing in
-            minutes by deploying it to Gatsby Cloud for free. Grab your Shopify
-            store credentials and
-            <a href="https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-shopify&utm_campaign=shopify-starter">
-              <img
-                src="https://www.gatsbyjs.com/deploynow.png"
-                alt="Deploy to Gatsby Cloud"
-                className={deployButton}
-              />
-            </a>
-          </p>
-        </>
-      )}
+      <h1 className={intro}>{txt_intro}</h1>
     </div>
-  )
+  );
 }
 
 export default function IndexPage({ data }) {
+  const brownser_is = typeof window !== "undefined";
+  if (brownser_is) {
+    localStorage.setItem("lang", "fr");
+  }
+
   return (
     <Layout>
-      <Hero />
+      <Introduction />
       <ProductListing products={data?.shopifyCollection?.products} />
     </Layout>
-  )
+  );
 }

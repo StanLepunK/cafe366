@@ -56,7 +56,7 @@
   color: var(--primary);
 }
 
-.nav {
+.menu {
   grid-area: navHeader;
   align-self: stretch;
 }

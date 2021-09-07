@@ -1,27 +1,29 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StoreContext } from "../context/store_context"
-import Logo from "../icons/logo"
-import { Navigation } from "./navigation"
-import { CartButton } from "./cart_button"
-import SearchIcon from "../icons/search"
-import { Toast } from "./toast"
+import * as React from "react";
+import { Link } from "gatsby";
+// app
+import { StoreContext } from "../context/store_context";
+import Logo from "../icons/logo";
+import { Menu } from "./menu";
+import { CartButton } from "./cart_button";
+import SearchIcon from "../icons/search";
+import { Toast } from "./toast";
 import {
   header,
   container,
   logo as logoCss,
   searchButton,
-  nav,
-} from "./header.module.css"
+  menu,
+} from "./header.module.css";
 
 export function Header() {
-  const { checkout, loading, didJustAddToCart } = React.useContext(StoreContext)
+  const { checkout, loading, didJustAddToCart } =
+    React.useContext(StoreContext);
 
-  const items = checkout ? checkout.lineItems : []
+  const items = checkout ? checkout.lineItems : [];
 
   const quantity = items.reduce((total, item) => {
-    return total + item.quantity
-  }, 0)
+    return total + item.quantity;
+  }, 0);
 
   return (
     <div className={container}>
@@ -29,7 +31,7 @@ export function Header() {
         <Link to="/" className={logoCss}>
           <Logo />
         </Link>
-        <Navigation className={nav} />
+        <Menu className={menu} />
         <Link to="/search" className={searchButton}>
           <SearchIcon />
         </Link>
@@ -64,5 +66,5 @@ export function Header() {
         )}
       </Toast>
     </div>
-  )
+  );
 }

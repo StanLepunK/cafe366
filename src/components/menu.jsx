@@ -1,10 +1,10 @@
-import { graphql, useStaticQuery, Link } from "gatsby"
-import * as React from "react"
-import slugify from "@sindresorhus/slugify"
+import { graphql, useStaticQuery, Link } from "gatsby";
+import * as React from "react";
+import slugify from "@sindresorhus/slugify";
 // app
-import { navStyle, navLink, activeLink } from "./navigation.module.css"
+import { navStyle, navLink, activeLink } from "./menu.module.css";
 
-export function Navigation({ className }) {
+export function Menu({ className }) {
   const {
     allShopifyProduct: { productTypes },
   } = useStaticQuery(graphql`
@@ -13,7 +13,7 @@ export function Navigation({ className }) {
         productTypes: distinct(field: productType)
       }
     }
-  `)
+  `);
 
   return (
     <nav className={[navStyle, className].join(" ")}>
@@ -36,5 +36,5 @@ export function Navigation({ className }) {
         </Link>
       ))}
     </nav>
-  )
+  );
 }

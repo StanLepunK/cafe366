@@ -13,22 +13,16 @@ https://youtu.be/58OD42jyF4o?t=1986
 
 https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-shopify#getting-started
 
-Old guide :
+https://medium.com/@emeruchecole9/building-an-e-commerce-store-with-gatsby-and-shopify-6af8558a301f
 
-https://www.gatsbyjs.com/docs/building-an-ecommerce-site-with-shopify/
+Doc to read the `.env` in the file `src/context/store_context.jsx`
 
-https://www.gatsbyjs.com/solutions/shopify/
+https://dev.to/sanfra1407/how-to-use-env-file-in-javascript-applications-with-webpack-18df
 
-https://shopthemedetector.com/blog/how-to-get-a-shopify-access-token/
+about .env
+https://www.gatsbyjs.com/docs/how-to/local-development/environment-variables/
 
-https://help.shopify.com/fr/partners/making-apps
+need use
+In development, Gatsby will load environment variables from a file named .env.development. For builds, it will load from .env.production.
 
-https://shopify.dev/api/storefront
-
-https://www.shopify.com/partners/blog/17056443-how-to-generate-a-shopify-api-token
-
-https://shopify.dev/apps/auth
-
-https://shopify.dev/api/admin/rest/reference/access/storefrontaccesstoken
-
-https://www.inkoop.io/blog/how-to-integrate-gatsby-with-shopify-store/
+https://stackoverflow.com/questions/62221655/interpolate-env-vars-client-side-in-gatsby-react-app
