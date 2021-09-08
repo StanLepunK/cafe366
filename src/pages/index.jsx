@@ -11,7 +11,7 @@ import {
   callToAction,
   deployButton,
 } from "./index.module.css";
-import describe from "../../media/json/describe.json";
+import content from "../../media/json/content.json";
 import { get_lang, find_lang } from "../utils/misc";
 
 export const query = graphql`
@@ -25,14 +25,13 @@ export const query = graphql`
 `;
 
 function Introduction() {
+  // replace the lines below by hooks useState
   let txt_intro = "";
 
   if (get_lang() === "fr") {
-    txt_intro = find_lang(describe.describe, "introduction", "fr");
-    // txt_intro = describe.describe[0].label_fr;
+    txt_intro = find_lang(content.info, "introduction", "fr");
   } else {
-    txt_intro = find_lang(describe.describe, "introduction", "en");
-    //txt_intro = describe.describe[0].label_en;
+    txt_intro = find_lang(content.info, "introduction", "en");
   }
 
   return (

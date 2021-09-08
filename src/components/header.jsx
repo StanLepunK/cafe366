@@ -32,9 +32,10 @@ export function Header() {
           <Logo />
         </Link>
         <Menu className={menu} />
-        <Link to="/search" className={searchButton}>
+        {/* REASEARH */}
+        {/* <Link to="/search" className={searchButton}>
           <SearchIcon />
-        </Link>
+        </Link> */}
         <CartButton quantity={quantity} />
       </header>
       <Toast show={loading || didJustAddToCart}>

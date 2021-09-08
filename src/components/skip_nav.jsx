@@ -1,5 +1,5 @@
 import * as React from "react";
-// app
+// APP TEMPLATE
 import { navLink } from "./skip_nav.module.css";
 
 const defaultId = `skip-to-content`;

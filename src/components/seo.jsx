@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Helmet } from "react-helmet"
+import * as React from "react";
+import { Helmet } from "react-helmet";
 // gatsby
-import { useStaticQuery, graphql } from "gatsby"
-import { useLocation } from "@reach/router"
+import { useStaticQuery, graphql } from "gatsby";
+import { useLocation } from "@reach/router";
 
 export function Seo({
   title = "",
@@ -11,7 +11,7 @@ export function Seo({
   image = "",
   children = null,
 }) {
-  const location = useLocation()
+  const location = useLocation();
   const {
     site: { siteMetadata },
   } = useStaticQuery(graphql`
@@ -24,11 +24,11 @@ export function Seo({
           hrefLang
           siteDescription
           siteImage
-          twitter
+          instagram
         }
       }
     }
-  `)
+  `);
 
   const {
     siteTitle,
@@ -38,14 +38,14 @@ export function Seo({
     siteImage,
     hrefLang,
     twitter,
-  } = siteMetadata
+  } = siteMetadata;
 
   const seo = {
     title: title || siteTitleDefault,
     description: description || siteDescription,
     url: pathname ? `${siteUrl}${pathname}` : location.href,
     image: `${siteUrl}${image || siteImage}`,
-  }
+  };
 
   return (
     <Helmet
@@ -61,12 +61,14 @@ export function Seo({
       <meta property="og:description" content={seo.description} />
       <meta property="og:image" content={seo.image} />
       <meta property="og:type" content="website" />
+      {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:url" content={seo.url} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
       <meta name="twitter:creator" content={twitter} />
+      {/* Instagram must be do in the future */}
       <link
         rel="icon"
         type="image/png"
@@ -90,5 +92,5 @@ export function Seo({
       )}
       {children}
     </Helmet>
-  )
+  );
 }

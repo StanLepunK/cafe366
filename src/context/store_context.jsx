@@ -15,6 +15,7 @@ const client = Client.buildClient(
   {
     domain: process.env.GATSBY_SHOPIFY_STORE_URL,
     storefrontAccessToken: "0ea422edee06c9d88e0857e3dc38d96c",
+    // storefrontAccessToken: process.env.GATSBY_STOREFRONT_ACCES_TOKEN,
   },
   fetch
 );

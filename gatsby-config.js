@@ -1,21 +1,15 @@
 require("dotenv").config();
 
-// const path = require("path");
-// const webpack = require("webpack");
-// const dotenv = require("dotenv").config({
-//   path: path.join(__dirname, ".env"),
-// });
-
 module.exports = {
   siteMetadata: {
-    siteTitle: "gatsby-starter-shopify",
-    siteTitleDefault: "gatsby-starter-shopify by @GatsbyJS",
-    siteUrl: "https://shopify-demo.gatsbyjs.com",
-    hrefLang: "en",
-    siteDescription:
-      "A Gatsby starter using the latest Shopify plugin showcasing a store with product overview, individual product pages, and a cart.",
+    siteTitle: "café 366",
+    siteTitleDefault: "café 366",
+    siteUrl: "https://cafe366.com",
+    hrefLang: "fr",
+    siteDescription: "Cafe 366 a shop for the speciality coffee",
     siteImage: "/default-og-image.jpg",
-    twitter: "@gatsbyjs",
+    twitter: "@cafe366",
+    instagram: "@cafe366",
   },
   flags: {
     FAST_DEV: true,
