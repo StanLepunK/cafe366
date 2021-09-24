@@ -3,7 +3,7 @@ import * as React from "react";
 import { graphql } from "gatsby";
 // APP TEMPLATE
 import { Layout } from "../../components/layout";
-import { ProductListing } from "../../components/product_listing";
+import { ProductListing } from "../../components/product/product_listing";
 import { Seo } from "../../components/seo";
 import { MoreButton } from "../../components/more_button";
 import { title } from "./index.module.css";

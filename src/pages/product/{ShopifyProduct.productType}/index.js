@@ -1,19 +1,22 @@
-import * as React from "react"
-// gatsby
-import { graphql } from "gatsby"
-
-import slugify from "@sindresorhus/slugify"
-// app
-import { Layout } from "../../../components/layout"
-import { ProductListing } from "../../../components/product_listing"
-import { Seo } from "../../../components/seo"
-import { MoreButton } from "../../../components/more_button"
-import { title } from "../index.module.css"
+// REACT
+import * as React from "react";
+// MISC
+import slugify from "@sindresorhus/slugify";
+// GATSBY
+import { graphql } from "gatsby";
+// CAFE 366
+import { Layout } from "../../../components/layout";
+import { ProductListing } from "../../../components/product/product_listing";
+import { Seo } from "../../../components/seo";
+import { MoreButton } from "../../../components/more_button";
+import { title } from "../index.module.css";
 
 export default function ProductTypeIndex({
   data: { products },
   pageContext: { productType },
 }) {
+  console.log("je suis la liste de produits", products);
+  console.log("je suis le type", productType);
   return (
     <Layout>
       <Seo title={`Category: ${productType}`} />
@@ -25,7 +28,7 @@ export default function ProductTypeIndex({
         </MoreButton>
       )}
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -43,4 +46,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

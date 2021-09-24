@@ -1,9 +1,11 @@
+/// REACT
 import * as React from "react";
-// gatsby
+import { useState } from "react";
+// GATSVBY
 import { graphql } from "gatsby";
-// app
+// GATSBY SHOPIFY REACT STARTER
 import { Layout } from "../components/layout";
-import { ProductListing } from "../components/product_listing";
+import { ProductListing } from "../components/product/product_listing";
 import {
   container,
   intro,
@@ -11,8 +13,25 @@ import {
   callToAction,
   deployButton,
 } from "./index.module.css";
+// CAFE 366
 import content from "../../media/json/content.json";
-import { get_lang, find_lang } from "../utils/misc";
+import { content_by_lang } from "../utils/misc";
+
+function Introduction() {
+  const [txt_intro, set_txt_intro] = useState(
+    content_by_lang(
+      content.info,
+      "introduction",
+      "CAFÉ 366 the real test of the coffee"
+    )
+  );
+
+  return (
+    <div className={container}>
+      <h1 className={intro}>{txt_intro}</h1>
+    </div>
+  );
+}
 
 export const query = graphql`
   query {
@@ -23,23 +42,6 @@ export const query = graphql`
     }
   }
 `;
-
-function Introduction() {
-  // replace the lines below by hooks useState
-  let txt_intro = "";
-
-  if (get_lang() === "fr") {
-    txt_intro = find_lang(content.info, "introduction", "fr");
-  } else {
-    txt_intro = find_lang(content.info, "introduction", "en");
-  }
-
-  return (
-    <div className={container}>
-      <h1 className={intro}>{txt_intro}</h1>
-    </div>
-  );
-}
 
 export default function IndexPage({ data }) {
   const brownser_is = typeof window !== "undefined";

@@ -1,5 +1,6 @@
+// REACT
 import * as React from "react";
-// gatsby
+// GATSBY SHOPIFY
 import { StoreProvider } from "./src/context/store_context";
 import "./src/styles/reset.css";
 import "./src/styles/variables.css";

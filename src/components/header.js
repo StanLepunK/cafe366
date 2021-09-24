@@ -1,9 +1,11 @@
+// REACT
 import * as React from "react";
+// GATSBY
 import { Link } from "gatsby";
-// app
+// GATSBY SHOPIFY STARTER
 import { StoreContext } from "../context/store_context";
 import Logo from "../icons/logo";
-import { Menu } from "./menu";
+import { Menu } from "./menu/menu";
 import { CartButton } from "./cart_button";
 import SearchIcon from "../icons/search";
 import { Toast } from "./toast";
@@ -29,7 +31,7 @@ export function Header() {
     <div className={container}>
       <header className={header}>
         <Link to="/" className={logoCss}>
-          <Logo />
+          <Logo size="50px" red={216} green={101} blue={44} />
         </Link>
         <Menu className={menu} />
         {/* REASEARH */}

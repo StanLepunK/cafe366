@@ -1,18 +1,20 @@
-import * as React from "react"
-// gatsby
-import { GatsbyImage, getSrc } from "gatsby-plugin-image"
-import { graphql, Link } from "gatsby"
+// REACT
+import * as React from "react";
+import { CgChevronRight as ChevronIcon } from "react-icons/cg";
+import { useState, useContext, useCallback, useEffect } from "react";
+// MISC
+import isEqual from "lodash.isequal";
+// GATSBY
+import { GatsbyImage, getSrc } from "gatsby-plugin-image";
+import { graphql, Link } from "gatsby";
+// GATSBY SHOPIFY STARTER
+import { Layout } from "../../../components/layout";
+import { StoreContext } from "../../../context/store_context";
+import { AddToCart } from "../../../components/add_to_cart";
+import { NumericInput } from "../../../components/numeric_input";
+import { formatPrice } from "../../../utils/format_price";
+import { Seo } from "../../../components/seo";
 
-import isEqual from "lodash.isequal"
-// app
-import { Layout } from "../../../components/layout"
-import { StoreContext } from "../../../context/store_context"
-import { AddToCart } from "../../../components/add_to_cart"
-import { NumericInput } from "../../../components/numeric_input"
-import { formatPrice } from "../../../utils/format_price"
-import { Seo } from "../../../components/seo"
-
-import { CgChevronRight as ChevronIcon } from "react-icons/cg"
 import {
   productBox,
   container,
@@ -31,9 +33,16 @@ import {
   addToCartStyle,
   metaSection,
   productDescription,
-} from "./product_page.module.css"
+} from "./product_page.module.css";
 
 export default function Product({ data: { product, suggestions } }) {
+  console.log(
+    "{ShopifyProduct.handle}",
+    "produit",
+    product,
+    "suggestions",
+    suggestions
+  );
   const {
     options,
     variants,
@@ -43,68 +52,66 @@ export default function Product({ data: { product, suggestions } }) {
     description,
     images,
     images: [firstImage],
-  } = product
-  const { client } = React.useContext(StoreContext)
+  } = product;
+  const { client } = useContext(StoreContext);
 
-  const [variant, setVariant] = React.useState({ ...initialVariant })
-  const [quantity, setQuantity] = React.useState(1)
+  const [variant, setVariant] = useState({ ...initialVariant });
+  const [quantity, setQuantity] = useState(1);
 
   const productVariant =
-    client.product.helpers.variantForOptions(product, variant) || variant
+    client.product.helpers.variantForOptions(product, variant) || variant;
 
-  const [available, setAvailable] = React.useState(
-    productVariant.availableForSale
-  )
+  const [available, setAvailable] = useState(productVariant.availableForSale);
 
-  const checkAvailablity = React.useCallback(
+  const checkAvailablity = useCallback(
     (productId) => {
       client.product.fetch(productId).then((fetchedProduct) => {
         const result =
           fetchedProduct?.variants.filter(
             (variant) => variant.id === productVariant.storefrontId
-          ) ?? []
+          ) ?? [];
 
         if (result.length > 0) {
-          setAvailable(result[0].available)
+          setAvailable(result[0].available);
         }
-      })
+      });
     },
     [productVariant.storefrontId, client.product]
-  )
+  );
 
   const handleOptionChange = (index, event) => {
-    const value = event.target.value
+    const value = event.target.value;
 
     if (value === "") {
-      return
+      return;
     }
 
-    const currentOptions = [...variant.selectedOptions]
+    const currentOptions = [...variant.selectedOptions];
 
     currentOptions[index] = {
       ...currentOptions[index],
       value,
-    }
+    };
 
     const selectedVariant = variants.find((variant) => {
-      return isEqual(currentOptions, variant.selectedOptions)
-    })
+      return isEqual(currentOptions, variant.selectedOptions);
+    });
 
-    setVariant({ ...selectedVariant })
-  }
+    setVariant({ ...selectedVariant });
+  };
 
-  React.useEffect(() => {
-    checkAvailablity(product.storefrontId)
-  }, [productVariant.storefrontId, checkAvailablity, product.storefrontId])
+  useEffect(() => {
+    checkAvailablity(product.storefrontId);
+  }, [productVariant.storefrontId, checkAvailablity, product.storefrontId]);
 
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     variant.price
-  )
+  );
 
-  const hasVariants = variants.length > 1
-  const hasImages = images.length > 0
-  const hasMultipleImages = true || images.length > 1
+  const hasVariants = variants.length > 1;
+  const hasImages = images.length > 0;
+  const hasMultipleImages = true || images.length > 1;
 
   return (
     <Layout>
@@ -215,7 +222,7 @@ export default function Product({ data: { product, suggestions } }) {
         </div>
       </div>
     </Layout>
-  )
+  );
 }
 
 export const query = graphql`
@@ -225,7 +232,7 @@ export const query = graphql`
       description
       productType
       productTypeSlug: gatsbyPath(
-        filePath: "/products/{ShopifyProduct.productType}"
+        filePath: "/product/{ShopifyProduct.productType}"
       )
       tags
       priceRangeV2 {
@@ -269,4 +276,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

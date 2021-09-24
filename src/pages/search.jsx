@@ -1,16 +1,19 @@
+// REACT
 import * as React from "react";
+import { CgChevronRight, CgChevronLeft } from "react-icons/cg";
+// MISC
 import slugify from "@sindresorhus/slugify";
 import debounce from "debounce";
-import { CgChevronRight, CgChevronLeft } from "react-icons/cg";
-// gatsby
+
+// GATSBY
 import { graphql } from "gatsby";
-// app
+// APP
 import { Layout } from "../components/layout";
 import CrossIcon from "../icons/cross";
 import SortIcon from "../icons/sort";
 import FilterIcon from "../icons/filter";
 import SearchIcon from "../icons/search";
-import { ProductCard } from "../components/product_card";
+import { ProductCard } from "../components/product/product_card";
 import { getValuesFromQueryString, useProductSearch } from "../utils/hooks";
 import { getCurrencySymbol } from "../utils/format_price";
 import { Spinner } from "../components/progress";
@@ -241,7 +244,7 @@ function SearchPage({
                     product={{
                       title: node.title,
                       priceRangeV2: node.priceRangeV2,
-                      slug: `/products/${slugify(node.productType)}/${
+                      slug: `/product/${slugify(node.productType)}/${
                         node.handle
                       }`,
                       // The search API and Gatsby data layer have slightly different images available.

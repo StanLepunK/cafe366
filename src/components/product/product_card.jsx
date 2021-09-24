@@ -1,10 +1,10 @@
-import * as React from "react"
+import * as React from "react";
 // gatsby
-import { graphql, Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-import { getShopifyImage } from "gatsby-source-shopify"
+import { graphql, Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+import { getShopifyImage } from "gatsby-source-shopify";
 // app
-import { formatPrice } from "../utils/format_price"
+import { formatPrice } from "../../utils/format_price";
 import {
   productCardStyle,
   productHeadingStyle,
@@ -12,7 +12,7 @@ import {
   productDetailsStyle,
   productVendorStyle,
   productPrice,
-} from "./product_card.module.css"
+} from "./product_card.module.css";
 
 export function ProductCard({ product, eager }) {
   const {
@@ -22,32 +22,32 @@ export function ProductCard({ product, eager }) {
     images: [firstImage],
     vendor,
     storefrontImages,
-  } = product
+  } = product;
 
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     priceRangeV2.minVariantPrice.amount
-  )
+  );
 
-  const defaultImageHeight = 200
-  const defaultImageWidth = 200
-  let storefrontImageData = {}
+  const defaultImageHeight = 200;
+  const defaultImageWidth = 200;
+  let storefrontImageData = {};
   if (storefrontImages) {
-    const storefrontImage = storefrontImages.edges[0].node
+    const storefrontImage = storefrontImages.edges[0].node;
     try {
       storefrontImageData = getShopifyImage({
         image: storefrontImage,
         layout: "fixed",
         width: defaultImageWidth,
         height: defaultImageHeight,
-      })
+      });
     } catch (e) {
-      console.error(e)
+      console.error(e);
     }
   }
 
   const hasImage =
-    firstImage || Object.getOwnPropertyNames(storefrontImageData || {}).length
+    firstImage || Object.getOwnPropertyNames(storefrontImageData || {}).length;
 
   return (
     <Link
@@ -74,7 +74,7 @@ export function ProductCard({ product, eager }) {
         <div className={productPrice}>{price}</div>
       </div>
     </Link>
-  )
+  );
 }
 
 export const query = graphql`
@@ -82,7 +82,7 @@ export const query = graphql`
     id
     title
     slug: gatsbyPath(
-      filePath: "/products/{ShopifyProduct.productType}/{ShopifyProduct.handle}"
+      filePath: "/product/{ShopifyProduct.productType}/{ShopifyProduct.handle}"
     )
     images {
       id
@@ -97,4 +97,4 @@ export const query = graphql`
     }
     vendor
   }
-`
+`;

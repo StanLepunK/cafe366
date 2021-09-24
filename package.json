@@ -1,14 +1,14 @@
 {
-  "name": "gatsby-starter-shopify",
+  "name": "cafe366",
   "version": "1.0.0",
   "private": true,
-  "description": "A Gatsby starter using the latest Shopify plugin showcasing a store with product overview, individual product pages, and a cart.",
-  "author": "LekoArts <hello@lekoarts.de>",
-  "license": "0BSD",
+  "description": "Boutique de cafés de spécialités",
+  "author": "Knupel <stan@knupel.art>",
+  "license": "MIT",
   "keywords": [
     "gatsby",
     "shopify",
-    "starter",
+    "coffee",
     "ecommerce",
     "e-commerce"
   ],

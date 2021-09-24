@@ -1,5 +1,9 @@
+// REACT
 import * as React from "react";
-// APP TEMPLATE
+import { useState } from "react";
+// GATSBY
+
+// GATSBY SHOPIFY STARTER
 import Logo from "../icons/logo";
 import {
   footerStyle,
@@ -10,26 +14,17 @@ import {
   footerNavList,
   footerNavListItem,
 } from "./footer.module.css";
-// APP CUSTOM
+// CAFE 366
 import content from "../../media/json/content.json";
-import { get_lang, find_lang } from "../utils/misc";
+import { content_by_lang } from "../utils/misc";
 
 export function Footer() {
-  // replace the lines below by hooks useState
-  let legal_info = "";
-  let copyright = "";
-
-  if (get_lang() === "fr") {
-    legal_info = find_lang(content.info, "legal info", "fr");
-  } else {
-    legal_info = find_lang(content.info, "legal info", "en");
-  }
-
-  if (get_lang() === "fr") {
-    copyright = find_lang(content.info, "copyright", "fr");
-  } else {
-    copyright = find_lang(content.info, "copyright", "en");
-  }
+  const [legal_info, set_legal_info] = useState(
+    content_by_lang(content.info, "legal info", "")
+  );
+  const [copyright, set_copyright] = useState(
+    content_by_lang(content.info, "copyright", "")
+  );
 
   return (
     <footer className={footerStyle}>
