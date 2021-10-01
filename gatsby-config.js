@@ -15,6 +15,16 @@ module.exports = {
     FAST_DEV: true,
   },
   plugins: [
+    // FONT
+    {
+      resolve: "gatsby-plugin-web-font-loader",
+      options: {
+        typekit: {
+          id: process.env.TYPEKIT_ID,
+        },
+      },
+    },
+    // SHOPIFY
     {
       resolve: "gatsby-source-shopify",
       options: {

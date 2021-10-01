@@ -29,7 +29,6 @@ function build_list(nodes) {
   if (nodes === undefined) {
     return null;
   }
-  console.log("nodes:", nodes);
   // step one add all elements
   nodes.map((elem) => {
     for (let i = 0; i < elem.collections.length; i++) {
@@ -43,7 +42,6 @@ function build_list(nodes) {
   // build finale list
   for (let i = 0; i < buf.length; i++) {
     let obj_temp = buf[i];
-
     if (list.length === 0) {
       list.push(obj_temp);
     } else {
@@ -59,7 +57,6 @@ function build_list(nodes) {
       }
     }
   }
-  console.log("list:", list);
   return list;
 }
 

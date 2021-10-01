@@ -10,10 +10,6 @@ var plugins = [{
       name: 'gatsby-plugin-sitemap',
       plugin: require('/Users/stan/En_cours/code/github/PROJET/cafe366/node_modules/gatsby-plugin-sitemap/gatsby-ssr'),
       options: {"plugins":[],"output":"/sitemap","createLinkInHead":true,"entryLimit":45000,"query":"{ site { siteMetadata { siteUrl } } allSitePage { nodes { path } } }","excludes":[]},
-    },{
-      name: 'gatsby-plugin-google-analytics',
-      plugin: require('/Users/stan/En_cours/code/github/PROJET/cafe366/node_modules/gatsby-plugin-google-analytics/gatsby-ssr'),
-      options: {"plugins":[],"trackingId":"XXX","head":false,"anonymize":false,"respectDNT":false,"exclude":[],"pageTransitionDelay":0,"enableWebVitalsTracking":false},
     }]
 /* global plugins */
 // During bootstrap, we write requires at top of this file which looks like:

@@ -8,6 +8,8 @@ https://github.com/gatsbyjs/gatsby-starter-shopify
 
 https://youtu.be/58OD42jyF4o?t=445
 
+https://owlypixel.com/build-a-store-with-shopify-and-gatsby/
+
 updating cart problem... the video talk about that at this moment
 https://youtu.be/58OD42jyF4o?t=1986
 
