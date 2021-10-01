@@ -6,7 +6,7 @@ import { Link } from "gatsby";
 import { StoreContext } from "../context/store_context";
 import Logo from "../icons/logo";
 import { Menu } from "./menu/menu";
-import { CartButton } from "./cart_button";
+import { CartButton } from "./cart/cart_button";
 import SearchIcon from "../icons/search";
 import { Toast } from "./toast";
 import {

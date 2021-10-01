@@ -31,7 +31,7 @@ export function Menu({ className }) {
         {prods}
       </Link>
       <MenuCollections className={className} />
-      <MenuProducts className={className} />
+      {/* <MenuProducts className={className} /> */}
     </nav>
   );
 }

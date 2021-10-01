@@ -10,7 +10,7 @@ import { graphql, Link } from "gatsby";
 // GATSBY SHOPIFY STARTER
 import { Layout } from "../../../components/layout";
 import { StoreContext } from "../../../context/store_context";
-import { AddToCart } from "../../../components/add_to_cart";
+import { AddToCart } from "../../../components/cart/add_to_cart";
 import { NumericInput } from "../../../components/numeric_input";
 import { formatPrice } from "../../../utils/format_price";
 import { Seo } from "../../../components/seo";
