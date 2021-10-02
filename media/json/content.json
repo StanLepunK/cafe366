@@ -14,6 +14,96 @@
       "name": "copyright",
       "label_en": "All rights reserved",
       "label_fr": "Tous droits réservés"
+    },
+    {
+      "name": "empty",
+      "label_en": "Out of stock",
+      "label_fr": "Plus disponible"
+    },
+    {
+      "name": "add",
+      "label_en": "Add to cart",
+      "label_fr": "Ajouter au panier"
+    },
+    {
+      "name": "select",
+      "label_en": "select",
+      "label_fr": "sélection:"
+    },
+    {
+      "name": "your cart",
+      "label_en": "your cart",
+      "label_fr": "votre panier"
+    },
+    {
+      "name": "shipping",
+      "label_en": "shipping",
+      "label_fr": "frais d'envoi"
+    },
+    {
+      "name": "total",
+      "label_en": "total",
+      "label_fr": "total"
+    },
+    {
+      "name": "subtotal",
+      "label_en": "subtotal",
+      "label_fr": "sous-total"
+    },
+    {
+      "name": "taxes",
+      "label_en": "taxes",
+      "label_fr": "taxes"
+    },
+    {
+      "name": "price",
+      "label_en": "price",
+      "label_fr": "prix"
+    },
+    {
+      "name": "checkout",
+      "label_en": "checkout",
+      "label_fr": "validez votre commande"
+    },
+    {
+      "name": "qty",
+      "label_en": "qty",
+      "label_fr": "qté"
+    },
+    {
+      "name": "quantity",
+      "label_en": "quantity",
+      "label_fr": "quantité"
+    },
+    {
+      "name": "calculated",
+      "label_en": "calculated at checkout",
+      "label_fr": "calculé à la commande"
+    },
+    {
+      "name": "remove",
+      "label_en": "remove",
+      "label_fr": "annuler"
+    },
+    {
+      "name": "product",
+      "label_en": "product",
+      "label_fr": "produit"
+    },
+    {
+      "name": "cart empty",
+      "label_en": "your cart is empty",
+      "label_fr": "votre panier est vide"
+    },
+    {
+      "name": "empty message",
+      "label_en": "Looks like you haven’t found anything yet. We understand that sometimes it’s hard to chose — maybe this helps:",
+      "label_fr": "Il semble que vous n'ayez encore rien trouvé. Nous comprenons qu'il est parfois difficile de choisir - peut-être que cela vous aidera :"
+    },
+    {
+      "name": "view product",
+      "label_en": "View trending products",
+      "label_fr": "Voir les bobos produits en vogue"
     }
   ],
 

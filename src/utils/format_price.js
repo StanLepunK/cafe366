@@ -1,28 +1,43 @@
 /**
  * Formats a currency according to the user's locale
- * @param {string} currency The ISO currency code
- * @param {number} value The amount to format
- * @returns
+ * v 0.0.2
+ * 2021-2021
  */
-export const formatPrice = (currency, value) =>
-  Intl.NumberFormat("en-US", {
+
+import { get_lang } from "./misc";
+
+export const formatPrice = (currency, value) => {
+  if (
+    get_lang() === "en" ||
+    get_lang() === "us" ||
+    get_lang() === "ca" ||
+    get_lang() === "au"
+  ) {
+    return Intl.NumberFormat("en-US", {
+      currency,
+      minimumFractionDigits: 2,
+      style: "currency",
+    }).format(value);
+  }
+  return Intl.NumberFormat("fr", {
     currency,
     minimumFractionDigits: 2,
     style: "currency",
-  }).format(value)
+  }).format(value);
+};
 
 export const getCurrencySymbol = (currency, locale = undefined) => {
   if (!currency) {
-    return
+    return;
   }
 
   const formatter = Intl.NumberFormat(locale, {
     currency,
     style: "currency",
-  })
-  const parts = formatter.formatToParts(100)
-  const { value: symbol } = parts.find((part) => part.type === "currency")
-  const formatted = formatter.format(100)
-  const symbolAtEnd = formatted.endsWith(symbol)
-  return { symbol, symbolAtEnd }
-}
+  });
+  const parts = formatter.formatToParts(100);
+  const { value: symbol } = parts.find((part) => part.type === "currency");
+  const formatted = formatter.format(100);
+  const symbolAtEnd = formatted.endsWith(symbol);
+  return { symbol, symbolAtEnd };
+};

@@ -87,6 +87,7 @@
   display: grid;
   grid-template-columns: min-content 1fr;
   gap: var(--space-lg);
+  font-size: 1.5em;
 }
 
 .selectVariant {

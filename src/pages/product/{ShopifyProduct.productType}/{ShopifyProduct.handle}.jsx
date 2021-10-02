@@ -1,3 +1,9 @@
+/**
+ * Fiche produit
+ * v 0.1.0
+ * 2021-2021
+ *
+ */
 // REACT
 import * as React from "react";
 import { CgChevronRight as ChevronIcon } from "react-icons/cg";
@@ -12,8 +18,13 @@ import { Layout } from "../../../components/layout";
 import { StoreContext } from "../../../context/store_context";
 import { AddToCart } from "../../../components/cart/add_to_cart";
 import { NumericInput } from "../../../components/numeric_input";
-import { formatPrice } from "../../../utils/format_price";
+
 import { Seo } from "../../../components/seo";
+// CAFE 366
+import content from "../../../../media/json/content.json";
+// APP
+import { formatPrice } from "../../../utils/format_price";
+import { content_by_lang } from "../../../utils/misc";
 
 import {
   productBox,
@@ -36,13 +47,13 @@ import {
 } from "./product_page.module.css";
 
 export default function Product({ data: { product, suggestions } }) {
-  console.log(
-    "{ShopifyProduct.handle}",
-    "produit",
-    product,
-    "suggestions",
-    suggestions
-  );
+  // console.log(
+  //   "{ShopifyProduct.handle}",
+  //   "produit",
+  //   product,
+  //   "suggestions",
+  //   suggestions
+  // );
   const {
     options,
     variants,
@@ -113,6 +124,10 @@ export default function Product({ data: { product, suggestions } }) {
   const hasImages = images.length > 0;
   const hasMultipleImages = true || images.length > 1;
 
+  const [select, set_select] = useState(
+    content_by_lang(content.info, "select", "")
+  );
+
   return (
     <Layout>
       {firstImage ? (
@@ -180,7 +195,8 @@ export default function Product({ data: { product, suggestions } }) {
                       aria-label="Variants"
                       onChange={(event) => handleOptionChange(index, event)}
                     >
-                      <option value="">{`Select ${name}`}</option>
+                      <option value="">{`${select} ${name}`}</option>
+                      {/* <option value="">{`Select ${name}`}</option> */}
                       {values.map((value) => (
                         <option value={value} key={`${name}-${value}`}>
                           {value}

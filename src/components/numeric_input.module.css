@@ -16,7 +16,9 @@
   grid-area: input;
   background: none;
   border: none;
-  padding: var(--space-sm) var(--space-lg);
+  padding-top: 0.1em;
+  padding-left: 0.7em;
+  /* padding: var(--space-sm) var(--space-lg); */
   align-self: stretch;
   width: 6ch;
   border-style: solid;

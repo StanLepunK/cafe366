@@ -3,7 +3,7 @@ import * as React from "react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 import { getShopifyImage } from "gatsby-source-shopify";
-// app
+// cafe 366
 import { formatPrice } from "../../utils/format_price";
 import {
   productCardStyle,
@@ -67,7 +67,7 @@ export function ProductCard({ product, eager }) {
         <div style={{ height: defaultImageHeight, width: defaultImageWidth }} />
       )}
       <div className={productDetailsStyle}>
-        <div className={productVendorStyle}>{vendor}</div>
+        {/* <div className={productVendorStyle}>{vendor}</div> */}
         <h2 as="h2" className={productHeadingStyle}>
           {title}
         </h2>
