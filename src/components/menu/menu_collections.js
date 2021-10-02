@@ -40,7 +40,7 @@ function build_list(nodes) {
     }
   });
   // build finale list
-  for (let i = 0; i < buf.length; i++) {
+  for (let i = 0 ; i < buf.length; i++) {
     let obj_temp = buf[i];
     if (list.length === 0) {
       list.push(obj_temp);
@@ -77,54 +77,13 @@ export default function MenuCollections({ className }) {
   );
 
   const [elems, set_elems] = useState(build_list(all.allShopifyProduct.nodes));
-
-  // console.log("all", all);
-  // console.log("all.allShopifyProduct", all.allShopifyProduct);
-  // console.log("all.allShopifyProduct.nodes", all.allShopifyProduct.nodes);
-
   return (
     <div className={[navStyle, className].join(" ")}>
       {elems.map((elem) => {
         if (elem.handle !== "frontpage") {
-          // console.log("elem.collections", elem.collections);
-          // console.log("elem.collections.handle", elem.collections[0].handle);
-
-          // return <div>{elem.collections[0].handle} </div>;
           return <LinkCollection handle={elem.handle} title={elem.title} />;
         }
       })}
-      {/* {collec.map((elem) => {
-        if (elem !== "frontpage") {
-          return <LinkCollection handle={elem} />;
-        }
-      })} */}
     </div>
   );
 }
-
-// export default function MenuCollections({ className }) {
-//   const {
-//     allShopifyProduct: { collec, test },
-//   } = useStaticQuery(graphql`
-//     query {
-//       allShopifyProduct {
-//         collec: distinct(field: collections___handle)
-//         test: nodes {
-//           collections {
-//             title
-//             handle
-//           }
-//         }
-//       }
-//     }
-//   `);
-
-//   return (
-//       {collec.map((elem) => {
-//         if (elem !== "frontpage") {
-//           return <LinkCollection handle={elem} />;
-//         }
-//       })}
-//     </div>
-//   );
-// }

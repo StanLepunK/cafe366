@@ -4,7 +4,8 @@
   align-items: center;
   overflow-x: auto;
   white-space: nowrap;
-  font-weight: var(--medium);
+  font-family: "malaga", "Garage Gothic", -apple-system, sans-serif;
+  font-weight: var(--bold);
 }
 
 .navLink {
