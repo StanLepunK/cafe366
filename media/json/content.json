@@ -11,6 +11,11 @@
       "label_fr": "Café 366 est une marque Bunabet"
     },
     {
+      "name": "about",
+      "label_en": "about",
+      "label_fr": "à propos"
+    },
+    {
       "name": "copyright",
       "label_en": "All rights reserved",
       "label_fr": "Tous droits réservés"
@@ -81,9 +86,19 @@
       "label_fr": "calculé à la commande"
     },
     {
+      "name": "cancel",
+      "label_en": "cancel",
+      "label_fr": "annuler"
+    },
+    {
       "name": "remove",
       "label_en": "remove",
-      "label_fr": "annuler"
+      "label_fr": "retirer"
+    },
+    {
+      "name": "clear",
+      "label_en": "clear",
+      "label_fr": "vider"
     },
     {
       "name": "product",

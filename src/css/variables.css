@@ -8,13 +8,17 @@
   /* palette */
   --black-fade-5: rgba(0, 0, 0, 0.05);
   --black-fade-40: rgba(0, 0, 0, 0.4);
+
   --grey-90: #232129;
   --grey-50: #78757a;
+
   --green-80: #088413;
   --green-50-rgb: 55, 182, 53;
-  --white: #ffffff;
+
   --orange: #e95a0c;
   --orange-rgb: 233, 90, 12;
+
+  --white: #ffffff;
 
   /* radii */
   --radius-sm: 4px;
@@ -46,19 +50,25 @@
   --bold: 700;
 
   /* font-size */
-  --text-xs: 12px;
+  /* --text-xs: 12px;
   --text-sm: 14px;
   --text-md: 16px;
   --text-lg: 18px;
   --text-xl: 20px;
   --text-2xl: 24px;
-  --text-3xl: 32px;
+  --text-3xl: 32px; */
+  --text-xs: 0.5em;
+  --text-sm: 0.75em;
+  --text-md: 1em;
+  --text-lg: 1.25em;
+  --text-xl: 1.5em;
+  --text-2xl: 2.5em;
+  --text-3xl: 3.5em;
 
   /* role-based tokens */
 
   /* colors */
   --primary: var(--orange);
-  /* --primary: var(--green-80); */
   --background: var(--white);
   --border: var(--black-fade-5);
 
@@ -66,7 +76,8 @@
   --transition: box-shadow 0.125s ease-in;
 
   /* shadows */
-  --shadow: 0 4px 12px rgba(var(--green-50-rgb), 0.5);
+  /* --shadow: 0 4px 12px rgba(var(--green-50-rgb), 0.5); */
+  --shadow: 0 4px 12px rgba(var(--orange-rgb), 0.5);
 
   /* text */
   /* color */

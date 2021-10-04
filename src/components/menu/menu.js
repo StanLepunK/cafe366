@@ -8,7 +8,7 @@ import { navStyle, navLink, activeLink } from "./menu.module.css";
 // CAFÉ 366
 import content from "../../../media/json/content.json";
 import { content_by_lang } from "../../utils/misc";
-import MenuProducts from "./menu_products";
+// import MenuProducts from "./menu_products";
 import MenuCollections from "./menu_collections";
 
 /**
@@ -20,8 +20,14 @@ export function Menu({ className }) {
     content_by_lang(content.collection, "all products", "ALL PRODUCTS")
   );
 
+  const [about, set_about] = useState(
+    content_by_lang(content.info, "about", "")
+  );
+
   return (
     <nav className={[navStyle, className].join(" ")}>
+      <MenuCollections className={className} />
+      {/* <MenuProducts className={className} /> */}
       <Link
         key="All"
         className={navLink}
@@ -30,8 +36,14 @@ export function Menu({ className }) {
       >
         {prods}
       </Link>
-      <MenuCollections className={className} />
-      {/* <MenuProducts className={className} /> */}
+      <Link
+        key="About"
+        className={navLink}
+        to="/about/"
+        activeClassName={activeLink}
+      >
+        {about}
+      </Link>
     </nav>
   );
 }

@@ -44,15 +44,12 @@ export default function CartPage() {
   const [price, set_price] = useState(
     content_by_lang(content.info, "price", "")
   );
-
   const [total, set_total] = useState(
     content_by_lang(content.info, "total", "")
   );
-
   const [subtotal, set_subtotal] = useState(
     content_by_lang(content.info, "subtotal", "")
   );
-
   const [calculated, set_calculated] = useState(
     content_by_lang(content.info, "calculated", "")
   );

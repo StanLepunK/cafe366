@@ -40,7 +40,7 @@ function build_list(nodes) {
     }
   });
   // build finale list
-  for (let i = 0 ; i < buf.length; i++) {
+  for (let i = 0; i < buf.length; i++) {
     let obj_temp = buf[i];
     if (list.length === 0) {
       list.push(obj_temp);
@@ -57,7 +57,8 @@ function build_list(nodes) {
       }
     }
   }
-  return list;
+  // the problem that's reverse all the time at each refresh !!!!
+  return list.reverse();
 }
 
 export default function MenuCollections({ className }) {

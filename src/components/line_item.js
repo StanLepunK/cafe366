@@ -1,72 +1,82 @@
-// react
-import * as React from "react"
-// mist
-import debounce from "lodash.debounce"
-// gatsby
-import { GatsbyImage } from "gatsby-plugin-image"
-import { getShopifyImage } from "gatsby-source-shopify"
-// app
-import { StoreContext } from "../context/store_context"
-import { formatPrice } from "../utils/format_price"
-import DeleteIcon from "../icons/delete"
-import { NumericInput } from "./numeric_input"
+// REACT
+import * as React from "react";
+import { useState, useContext, useMemo, useCallback } from "react";
+// MISC
+import debounce from "lodash.debounce";
+// GATSBY
+import { GatsbyImage } from "gatsby-plugin-image";
+import { getShopifyImage } from "gatsby-source-shopify";
+// APP
+import { StoreContext } from "../context/store_context";
+import { formatPrice } from "../utils/format_price";
+import DeleteIcon from "../icons/delete";
+import { NumericInput } from "./numeric_input";
+import { content_by_lang } from "./../utils/misc";
+// CSS
 import {
   title,
   remove,
   variant,
   totals,
   priceColumn,
-} from "./line_item.module.css"
+} from "./line_item.module.css";
+
+// CAFE 366
+import content from "./../../media/json/content.json";
 
 export function LineItem({ item }) {
   const { removeLineItem, checkout, updateLineItem, loading } =
-    React.useContext(StoreContext)
-  const [quantity, setQuantity] = React.useState(item.quantity)
+    useContext(StoreContext);
+  const [quantity, setQuantity] = useState(item.quantity);
+
+  const [remove_item, set_remove_item] = useState(
+    content_by_lang(content.info, "remove", "")
+  );
 
   const variantImage = {
     ...item.variant.image,
     originalSrc: item.variant.image.src,
-  }
+  };
   const price = formatPrice(
     item.variant.priceV2.currencyCode,
     Number(item.variant.priceV2.amount)
-  )
+  );
 
   const subtotal = formatPrice(
     item.variant.priceV2.currencyCode,
     Number(item.variant.priceV2.amount) * quantity
-  )
+  );
 
   const handleRemove = () => {
-    removeLineItem(checkout.id, item.id)
-  }
+    removeLineItem(checkout.id, item.id);
+  };
 
   const uli = debounce(
     (value) => updateLineItem(checkout.id, item.id, value),
     300
-  )
+  );
   // eslint-disable-next-line
-  const debouncedUli = React.useCallback((value) => uli(value), [])
+  const debouncedUli = useCallback((value) => uli(value), []);
 
   const handleQuantityChange = (value) => {
     if (value !== "" && Number(value) < 1) {
-      return
+      return;
     }
-    setQuantity(value)
+    setQuantity(value);
     if (Number(value) >= 1) {
-      debouncedUli(value)
+      debouncedUli(value);
     }
+  };
+
+  function do_increment() {
+    handleQuantityChange(Number(quantity || 0) + 1);
   }
 
-  function doIncrement() {
-    handleQuantityChange(Number(quantity || 0) + 1)
+  function do_decrement() {
+    handleQuantityChange(Number(quantity || 0) - 1);
   }
 
-  function doDecrement() {
-    handleQuantityChange(Number(quantity || 0) - 1)
-  }
-
-  const image = React.useMemo(
+  const image = useMemo(
     () =>
       getShopifyImage({
         image: variantImage,
@@ -77,7 +87,7 @@ export function LineItem({ item }) {
       }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [variantImage.src]
-  )
+  );
 
   return (
     <tr>
@@ -97,7 +107,7 @@ export function LineItem({ item }) {
         </div>
         <div className={remove}>
           <button onClick={handleRemove}>
-            <DeleteIcon /> Remove
+            <DeleteIcon /> {remove_item}
           </button>
         </div>
       </td>
@@ -107,12 +117,12 @@ export function LineItem({ item }) {
           disabled={loading}
           value={quantity}
           aria-label="Quantity"
-          onIncrement={doIncrement}
-          onDecrement={doDecrement}
+          onIncrement={do_increment}
+          onDecrement={do_decrement}
           onChange={(e) => handleQuantityChange(e.currentTarget.value)}
         />
       </td>
       <td className={totals}>{subtotal}</td>
     </tr>
-  )
+  );
 }

@@ -24,6 +24,19 @@ module.exports = {
         },
       },
     },
+
+    // MARKDOWN
+    // https://dev.to/alexalexyang/how-to-use-markdown-in-pages-in-gatsby-5dee
+    // https://www.gatsbyjs.com/docs/how-to/routing/adding-markdown-pages/
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/media/markdown`,
+        name: `markdown`,
+      },
+    },
+    `gatsby-transformer-remark`,
+
     // SHOPIFY
     {
       resolve: "gatsby-source-shopify",
@@ -33,11 +46,15 @@ module.exports = {
         shopifyConnections: ["collections"],
       },
     },
+    // GATSBY IMAGE
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+
+    // MISC
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+    // GATSBY CLOUD
     "gatsby-plugin-gatsby-cloud",
     // Add your Google Analytics ID to the .env file to enable
     // Otherwise, this plugin can be removed
