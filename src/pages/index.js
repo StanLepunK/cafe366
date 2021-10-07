@@ -1,6 +1,6 @@
 /// REACT
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // GATSVBY
 import { graphql } from "gatsby";
 // GATSBY SHOPIFY REACT STARTER
@@ -16,6 +16,8 @@ import {
 // CAFE 366
 import content from "../../media/json/content.json";
 import { content_by_lang } from "../utils/misc";
+// APP
+const r = require("./../lib/r_constants_colour");
 
 function Introduction() {
   const [txt_intro, set_txt_intro] = useState(
@@ -44,7 +46,20 @@ export const query = graphql`
 `;
 
 export default function IndexPage({ data }) {
+  // local Storage part
   const brownser_is = typeof window !== "undefined";
+  // constants
+  /**
+   *  Deal with SSR Gatsby rendering problem with class Object need to pass by useState, useEffect
+   *  https://blog.logrocket.com/using-localstorage-react-hooks/
+   *  https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/
+   */
+  useEffect(() => {
+    if (brownser_is) {
+      localStorage.setItem("constants", JSON.stringify(r));
+    }
+  }, ["constants", r]);
+  // language
   if (brownser_is) {
     localStorage.setItem("lang", "fr");
   }

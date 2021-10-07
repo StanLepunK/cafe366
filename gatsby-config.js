@@ -1,4 +1,5 @@
 require("dotenv").config();
+// const r = require("./src/lib/r_constants_colour");
 
 module.exports = {
   siteMetadata: {
@@ -14,6 +15,7 @@ module.exports = {
   flags: {
     FAST_DEV: true,
   },
+
   plugins: [
     // FONT
     {

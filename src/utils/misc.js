@@ -1,8 +1,17 @@
 /**
  * UTILS MISC
- * v 0.1.1
+ * v 0.1.2
  * 2021-2021
  * */
+// language
+export function get_constants() {
+  const brownser_is = typeof window !== "undefined";
+  if (brownser_is) {
+    const constants = localStorage.getItem("constants");
+    return constants !== null ? JSON.parse(constants) : "";
+  }
+  return "";
+}
 
 // language
 export function get_lang() {

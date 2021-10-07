@@ -1,8 +1,10 @@
 import * as React from "react";
 import { SkipNavContent, SkipNavLink } from "./skip_nav";
-import { Header } from "./header";
-import { Footer } from "./footer";
+import { Header } from "./header/header";
+import { Footer } from "./footer/footer";
 import { Seo } from "./seo";
+
+// const r = require("./../lib/r_constants_colour");
 
 export function Layout({ children }) {
   return (

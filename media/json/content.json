@@ -7,8 +7,8 @@
     },
     {
       "name": "legal info",
-      "label_en": "café 366 is a trademark from Bunabet",
-      "label_fr": "Café 366 est une marque Bunabet"
+      "label_en": "legal info",
+      "label_fr": "mentions légales"
     },
     {
       "name": "about",
@@ -118,7 +118,7 @@
     {
       "name": "view product",
       "label_en": "View trending products",
-      "label_fr": "Voir les bobos produits en vogue"
+      "label_fr": "Voir les dernières tendances"
     }
   ],
 

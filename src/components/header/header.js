@@ -1,21 +1,33 @@
 // REACT
 import * as React from "react";
+import { useState } from "react";
 // GATSBY
 import { Link } from "gatsby";
 // GATSBY SHOPIFY STARTER
-import { StoreContext } from "../context/store_context";
-import Logo from "../icons/logo";
-import { Menu } from "./menu/menu";
-import { CartButton } from "./cart/cart_button";
-import SearchIcon from "../icons/search";
-import { Toast } from "./toast";
+import { StoreContext } from "./../../context/store_context";
+import Logo from "./../../icons/logo";
+import { Menu } from "./../menu/menu";
+import { CartButton } from "./../cart/cart_button";
+import SearchIcon from "./../../icons/search";
+import { Toast } from "./../toast";
 import {
   header,
   container,
-  logo as logoCss,
+  // logo as logoCss,
   searchButton,
   menu,
 } from "./header.module.css";
+// APP
+import {
+  num_to_red,
+  num_to_green,
+  num_to_blue,
+  num_to_hue,
+  num_to_saturation,
+  num_to_brightness,
+} from "./../../utils/color";
+
+import { get_constants } from "./../../utils/misc";
 
 export function Header() {
   const { checkout, loading, didJustAddToCart } =
@@ -26,12 +38,19 @@ export function Header() {
   const quantity = items.reduce((total, item) => {
     return total + item.quantity;
   }, 0);
+  /**
+   *  Deal with SSR Gatsby rendering problem with class Object need to pass by useState, useEffect
+   *  https://blog.logrocket.com/using-localstorage-react-hooks/
+   *  https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/
+   */
+  const [r, set_r] = useState(get_constants());
 
   return (
     <div className={container}>
       <header className={header}>
-        <Link to="/" className={logoCss}>
-          <Logo size="50px" red={216} green={101} blue={44} />
+        <Link to="/">
+          {/* <Link to="/" className={logoCss}> */}
+          <Logo size="60px" color={r.LIN} translate_x={-30} />
         </Link>
         <Menu className={menu} />
         {/* REASEARH */}

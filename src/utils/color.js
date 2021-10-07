@@ -1,21 +1,79 @@
 /**
  *
  * Color utilities
+ * v 0.2.2
  * 2021-2021
  *
  */
 
 /**
- * INTERNAL FUNCTION
- * */
-export function hex_to_rgb(hex) {
+ *
+ * RGB convert from color number, like processing
+ */
+export function num_to_red(number_rgb) {
+  let c = (number_rgb >> 16) & 0xff;
+  return c;
+}
+
+export function num_to_green(number_rgb) {
+  let c = (number_rgb >> 8) & 0xff;
+  return c;
+}
+
+export function num_to_blue(number_rgb) {
+  let c = number_rgb & 0xff;
+  return c;
+}
+
+/**
+ *
+ * HSB convert from color number, like processing
+ */
+
+export function num_to_hue(number_rgb) {
+  return num_to_hsb(number_rgb).hue;
+}
+
+export function num_to_saturation(number_rgb) {
+  return num_to_hsb(number_rgb).sat;
+}
+
+export function num_to_brightness(number_rgb) {
+  return num_to_hsb(number_rgb).bri;
+}
+
+// cenverter
+export function num_to_rgb(number_rgb) {
+  const obj = {
+    red: num_to_red(number_rgb),
+    green: num_to_green(number_rgb),
+    blue: num_to_blue(number_rgb),
+  };
+  return obj;
+}
+
+export function num_to_hsb(number_rgb) {
+  const r = num_to_red(number_rgb);
+  const g = num_to_green(number_rgb);
+  const b = num_to_blue(number_rgb);
+  const hsb_arr = rgb_to_hsb(r, g, b);
+
+  const obj = {
+    hue: hsb_arr[0],
+    sat: hsb_arr[1],
+    bri: hsb_arr[2],
+  };
+  return obj;
+}
+
+export function hex_to_rgb(hex_rgb) {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, (m, r, g, b) => {
+  hex_rgb = hex_rgb.replace(shorthandRegex, (m, r, g, b) => {
     return r + r + g + g + b + b;
   });
 
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex_rgb);
   return result
     ? [
         parseInt(result[1], 16),
@@ -23,6 +81,27 @@ export function hex_to_rgb(hex) {
         parseInt(result[3], 16),
       ]
     : null;
+}
+
+export function rgb_to_hsb(r, g, b) {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const v = Math.max(r, g, b),
+    n = v - Math.min(r, g, b);
+  const h =
+    n === 0
+      ? 0
+      : n && v === r
+      ? (g - b) / n
+      : v === g
+      ? 2 + (b - r) / n
+      : 4 + (r - g) / n;
+  const hue = 60 * (h < 0 ? h + 6 : h);
+  const sat = v && (n / v) * 100;
+  const bri = v * 100;
+  // return [60 * (h < 0 ? h + 6 : h), v && (n / v) * 100, v * 100];
+  return [hue, sat, bri];
 }
 
 /**
@@ -55,6 +134,12 @@ export function css_rgb_to_filter(red, green, blue) {
   return null;
 }
 
+export function style_num_to_filter(number_rgb) {
+  const color = num_to_rgb(number_rgb);
+  const filter = data_rgb_to_filter(color.red, color.green, color.blue);
+  return filter_to_string(filter);
+}
+
 export function style_rgb_to_filter(red, green, blue) {
   const filter = data_rgb_to_filter(red, green, blue);
   return filter_to_string(filter);
@@ -82,7 +167,9 @@ export function data_hex_to_filter(hex_value) {
   return data_rgb_to_filter(rgb[0], rgb[1], rgb[2]);
 }
 
-// INTERNAL
+/**
+ * INTERNAL FUNCTION
+ * */
 function filter_to_string(filter) {
   return (
     filter.invert +

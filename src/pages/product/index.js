@@ -5,7 +5,7 @@ import { graphql } from "gatsby";
 import { Layout } from "../../components/layout";
 import { ProductListing } from "../../components/product/product_listing";
 import { Seo } from "../../components/seo";
-import { MoreButton } from "../../components/more_button";
+import { MoreButton } from "../../components/button/button";
 import { title } from "./index.module.css";
 // APP CUSTOM
 import content from "../../../media/json/content.json";

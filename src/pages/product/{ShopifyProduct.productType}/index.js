@@ -8,15 +8,15 @@ import { graphql } from "gatsby";
 import { Layout } from "../../../components/layout";
 import { ProductListing } from "../../../components/product/product_listing";
 import { Seo } from "../../../components/seo";
-import { MoreButton } from "../../../components/more_button";
+import { MoreButton } from "../../../components/button/button";
 import { title } from "../index.module.css";
 
 export default function ProductTypeIndex({
   data: { products },
   pageContext: { productType },
 }) {
-  console.log("je suis la liste de produits", products);
-  console.log("je suis le type", productType);
+  // console.log("je suis la liste de produits", products);
+  // console.log("je suis le type", productType);
   return (
     <Layout>
       <Seo title={`Category: ${productType}`} />

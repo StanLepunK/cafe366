@@ -12,20 +12,21 @@
   text-decoration: none;
   height: var(--size-input);
   display: flex;
-  color: var(--text-color-secondary);
+  color: var(--cafe);
   align-items: center;
   padding-left: var(--space-md);
   padding-right: var(--space-md);
-  font-size: 1.2em;
+  transition: font-size 0.3s;
+  font-size: 1.3em;
 }
 
 .navLink:hover {
-  color: var(--text-color);
+  font-size: 1.6em;
 }
 
 .activeLink,
 .navLink[aria-active="page"] {
-  color: var(--primary);
+  color: var(--lin);
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
@@ -33,5 +34,5 @@
 
 .activeLink:hover,
 .navLink[aria-active="page"]:hover {
-  color: var(--primary);
+  color: var(--lin);
 }

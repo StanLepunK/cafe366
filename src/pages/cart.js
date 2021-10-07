@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+// import { useState } from "react";
 // gatsby
 import { Link } from "gatsby";
 // app
@@ -35,48 +35,18 @@ export default function CartPage() {
     window.open(checkout.webUrl);
   };
 
-  const [your_cart, set_your_cart] = useState(
-    content_by_lang(content.info, "your cart", "")
-  );
-  const [product, set_product] = useState(
-    content_by_lang(content.info, "product", "")
-  );
-  const [price, set_price] = useState(
-    content_by_lang(content.info, "price", "")
-  );
-  const [total, set_total] = useState(
-    content_by_lang(content.info, "total", "")
-  );
-  const [subtotal, set_subtotal] = useState(
-    content_by_lang(content.info, "subtotal", "")
-  );
-  const [calculated, set_calculated] = useState(
-    content_by_lang(content.info, "calculated", "")
-  );
-
-  const [quantity, set_quantity] = useState(
-    content_by_lang(content.info, "quantity", "")
-  );
-
-  const [empty_mess, set_empty_mess] = useState(
-    content_by_lang(content.info, "empty message", "")
-  );
-
-  const [view_prod, set_view_prod] = useState(
-    content_by_lang(content.info, "view product", "")
-  );
-
-  const [checkout_mess, set_checkout_mess] = useState(
-    content_by_lang(content.info, "checkout", "")
-  );
-
-  const [shipping, set_shipping] = useState(
-    content_by_lang(content.info, "shipping", "")
-  );
-
-  const [cart_empty, set_cart_empty] = useState(
-    content_by_lang(content.info, "cart empty", "")
-  );
+  const your_cart = content_by_lang(content.info, "your cart", "");
+  const product = content_by_lang(content.info, "product", "");
+  const price = content_by_lang(content.info, "price", "");
+  const total = content_by_lang(content.info, "total", "");
+  // const subtotal = content_by_lang(content.info, "subtotal", "");
+  const calculated = content_by_lang(content.info, "calculated", "");
+  const quantity = content_by_lang(content.info, "quantity", "");
+  const empty_mess = content_by_lang(content.info, "empty message", "");
+  const view_prod = content_by_lang(content.info, "view product", "");
+  const checkout_mess = content_by_lang(content.info, "checkout", "");
+  const shipping = content_by_lang(content.info, "shipping", "");
+  const cart_empty = content_by_lang(content.info, "cart empty", "");
 
   return (
     <Layout>

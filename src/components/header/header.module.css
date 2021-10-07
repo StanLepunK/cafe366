@@ -11,9 +11,11 @@
   width: 100%;
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr min-content min-content;
-  grid-template-areas: "logo nada searchButton cartButton" "navHeader navHeader navHeader navHeader";
+  grid-template-areas: "logo navHeader searchButton cartButton";
+  /* grid-template-areas: "logo nada searchButton cartButton" "navHeader navHeader navHeader navHeader"; */
   align-items: center;
-  background-color: var(--background);
+  /* background-color: var(--background); */
+  background-color: var(--orange_366);
 }
 
 .header::after {
@@ -23,21 +25,21 @@
   width: var(--space-2xl);
   z-index: 1;
   align-self: stretch;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0),
     rgba(255, 255, 255, 1)
-  );
+  ); */
   justify-self: flex-end;
 }
 
-@media (min-width: 640px) {
+@media (max-width: 640px) {
   .header {
-    grid-template-areas: "logo navHeader searchButton cartButton";
+    grid-template-areas: "logo nada searchButton cartButton" "navHeader navHeader navHeader navHeader";
   }
 }
 
-.logo {
+/* .logo {
   display: flex;
   grid-area: logo;
   height: 100%;
@@ -48,13 +50,13 @@
 }
 
 .logo:hover {
+  color: var(--white);
   color: var(--text-color);
-  text-decoration: none;
 }
 
 .logo[aria-current="page"] {
   color: var(--primary);
-}
+} */
 
 .menu {
   grid-area: navHeader;

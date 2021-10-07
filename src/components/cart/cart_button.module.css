@@ -1,5 +1,6 @@
 .cartButton {
-  color: var(--text-color-secondary);
+  /* color: var(--text-color-secondary); */
+  color: var(--lin);
   grid-area: cartButton;
   width: var(--size-input);
   height: var(--size-input);
@@ -11,7 +12,7 @@
 }
 
 .cartButton:hover {
-  color: var(--text-color);
+  color: var(--cafe);
 }
 
 .badge {
