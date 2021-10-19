@@ -12,10 +12,8 @@
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr min-content min-content;
   grid-template-areas: "logo navHeader searchButton cartButton";
-  /* grid-template-areas: "logo nada searchButton cartButton" "navHeader navHeader navHeader navHeader"; */
   align-items: center;
-  /* background-color: var(--background); */
-  background-color: var(--orange_366);
+  background-color: var(--background_header);
 }
 
 .header::after {
@@ -35,7 +33,9 @@
 
 @media (max-width: 640px) {
   .header {
-    grid-template-areas: "logo nada searchButton cartButton" "navHeader navHeader navHeader navHeader";
+    grid-template-areas:
+      "logo nada searchButton cartButton"
+      "navHeader navHeader navHeader navHeader";
   }
 }
 

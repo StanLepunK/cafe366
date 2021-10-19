@@ -4,7 +4,6 @@ import { useState } from "react";
 // GATSBY
 import { navigate } from "gatsby";
 // GATSBY SHOPIFY STARTER
-import Logo from "./../../icons/logo";
 import {
   footer,
   className_copyright,
@@ -13,34 +12,16 @@ import {
   link_page,
 } from "./footer.module.css";
 // APP
-// const r = require("./../lib/r_constants_colour"); //
 import { get_constants } from "./../../utils/misc";
 import { style_num_to_filter } from "./../../utils/color";
-import { ButtonPicto, LinkPage } from "./../../components/button/button";
+import { Picto, LinkPage } from "./../../components/button/button";
 
 // CAFE 366
 import content from "./../../../media/json/content.json";
 import { content_by_lang } from "./../../utils/misc";
 import picto_facebook from "./../../../media/picto/facebook_2021.svg";
 import picto_instagram from "./../../../media/picto/instagram_2016.svg";
-
-// function LinkPage({ className, style, where, children }) {
-//   const where_are_you_going = (event) => {
-//     event.preventDefault();
-//     if (typeof where === "string" || where instanceof String) {
-//       if (where === "/back") {
-//         navigate(-1);
-//       } else {
-//         navigate(where);
-//       }
-//     }
-//   };
-//   return (
-//     <div className={className} style={style} onClick={where_are_you_going}>
-//       {children}
-//     </div>
-//   );
-// }
+import logo_366 from "./../../../media/logo/cafe366_logo_noir.svg";
 
 export function Footer() {
   const [legal_info, set_legal_info] = useState(
@@ -71,19 +52,19 @@ export function Footer() {
   return (
     <footer className={footer}>
       <div className={identity}>
-        <Logo color={r.LIN} />
+        <Picto src={logo_366} stylePicto={picto_style} />
         <div className={className_copyright}>
           Copyright &copy; {new Date().getFullYear()} · {copyright}
         </div>
       </div>
-      <ButtonPicto
+      <Picto
         src={picto_facebook}
         stylePicto={picto_style}
         classNameContainer={picto_container}
         alt="facebook"
         href="https://www.facebook.com/Cafe366torrefaction"
       />
-      <ButtonPicto
+      <Picto
         src={picto_instagram}
         stylePicto={picto_style}
         classNameContainer={picto_container}

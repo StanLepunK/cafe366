@@ -1,4 +1,4 @@
-.moreButton {
+.more_button {
   align-items: center;
   background: var(--primary);
   border-radius: var(--radius-md);
@@ -15,6 +15,6 @@
   transition: var(--transition);
 }
 
-.moreButton:hover {
+.more_button:hover {
   box-shadow: var(--shadow);
 }

@@ -4,8 +4,6 @@ import { Header } from "./header/header";
 import { Footer } from "./footer/footer";
 import { Seo } from "./seo";
 
-// const r = require("./../lib/r_constants_colour");
-
 export function Layout({ children }) {
   return (
     <div>

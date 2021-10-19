@@ -1,9 +1,20 @@
+import React from "react";
+import { useEffect } from "react";
 /**
  * UTILS MISC
- * v 0.1.2
+ * v 0.2.1
  * 2021-2021
  * */
-// language
+
+// constants
+export function SetConstants(r, brownser_is) {
+  useEffect(() => {
+    if (brownser_is) {
+      localStorage.setItem("constants", JSON.stringify(r));
+    }
+  }, ["constants", r]);
+}
+
 export function get_constants() {
   const brownser_is = typeof window !== "undefined";
   if (brownser_is) {

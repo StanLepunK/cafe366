@@ -15,7 +15,7 @@ import {
 } from "./index.module.css";
 // CAFE 366
 import content from "../../media/json/content.json";
-import { content_by_lang } from "../utils/misc";
+import { content_by_lang, SetConstants } from "../utils/misc";
 // APP
 const r = require("./../lib/r_constants_colour");
 
@@ -45,6 +45,14 @@ export const query = graphql`
   }
 `;
 
+// function SetConstants(r, brownser_is) {
+//   useEffect(() => {
+//     if (brownser_is) {
+//       localStorage.setItem("constants", JSON.stringify(r));
+//     }
+//   }, ["constants", r]);
+// }
+
 export default function IndexPage({ data }) {
   // local Storage part
   const brownser_is = typeof window !== "undefined";
@@ -54,11 +62,12 @@ export default function IndexPage({ data }) {
    *  https://blog.logrocket.com/using-localstorage-react-hooks/
    *  https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/
    */
-  useEffect(() => {
-    if (brownser_is) {
-      localStorage.setItem("constants", JSON.stringify(r));
-    }
-  }, ["constants", r]);
+  SetConstants(r, brownser_is);
+  // useEffect(() => {
+  //   if (brownser_is) {
+  //     localStorage.setItem("constants", JSON.stringify(r));
+  //   }
+  // }, ["constants", r]);
   // language
   if (brownser_is) {
     localStorage.setItem("lang", "fr");
