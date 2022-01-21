@@ -33,13 +33,14 @@ var _stripPrefix = _interopRequireDefault(require("./strip-prefix"));
 var _matchPaths = _interopRequireDefault(require("$virtual/match-paths.json"));
 
 // Generated during bootstrap
-const loader = new _loader.ProdLoader(_asyncRequires.default, _matchPaths.default);
+const loader = new _loader.ProdLoader(_asyncRequires.default, _matchPaths.default, window.pageData);
 (0, _loader.setLoader)(loader);
 loader.setApiRunner(_apiRunnerBrowser.apiRunner);
 window.asyncRequires = _asyncRequires.default;
 window.___emitter = _emitter.default;
 window.___loader = _loader.publicLoader;
 (0, _navigation.init)();
+const reloadStorageKey = `gatsby-reload-compilation-hash-match`;
 (0, _apiRunnerBrowser.apiRunnerAsync)(`onClientEntry`).then(() => {
   // Let plugins register a service worker. The plugin just needs
   // to return true.
@@ -106,7 +107,7 @@ window.___loader = _loader.publicLoader;
         location: location,
         id: "gatsby-focus-wrapper"
       }, /*#__PURE__*/_react.default.createElement(RouteHandler, (0, _extends2.default)({
-        path: pageResources.page.path === `/404.html` ? (0, _stripPrefix.default)(location.pathname, __BASE_PATH__) : encodeURI(pageResources.page.matchPath || pageResources.page.path)
+        path: pageResources.page.path === `/404.html` || pageResources.page.path === `/500.html` ? (0, _stripPrefix.default)(location.pathname, __BASE_PATH__) : encodeURI((pageResources.page.matchPath || pageResources.page.path).split(`?`)[0])
       }, this.props, {
         location: location,
         pageResources: pageResources
@@ -119,20 +120,64 @@ window.___loader = _loader.publicLoader;
     pagePath,
     location: browserLoc
   } = window; // Explicitly call navigate if the canonical path (window.pagePath)
-  // is different to the browser path (window.location.pathname). But
-  // only if NONE of the following conditions hold:
+  // is different to the browser path (window.location.pathname). SSR
+  // page paths might include search params, while SSG and DSG won't.
+  // If page path include search params we also compare query params.
+  // But only if NONE of the following conditions hold:
   //
   // - The url matches a client side route (page.matchPath)
   // - it's a 404 page
   // - it's the offline plugin shell (/offline-plugin-app-shell-fallback/)
 
-  if (pagePath && __BASE_PATH__ + pagePath !== browserLoc.pathname && !(loader.findMatchPath((0, _stripPrefix.default)(browserLoc.pathname, __BASE_PATH__)) || pagePath === `/404.html` || pagePath.match(/^\/404\/?$/) || pagePath.match(/^\/offline-plugin-app-shell-fallback\/?$/))) {
-    (0, _reachRouter.navigate)(__BASE_PATH__ + pagePath + browserLoc.search + browserLoc.hash, {
+  if (pagePath && __BASE_PATH__ + pagePath !== browserLoc.pathname + (pagePath.includes(`?`) ? browserLoc.search : ``) && !(loader.findMatchPath((0, _stripPrefix.default)(browserLoc.pathname, __BASE_PATH__)) || pagePath.match(/^\/(404|500)(\/?|.html)$/) || pagePath.match(/^\/offline-plugin-app-shell-fallback\/?$/))) {
+    (0, _reachRouter.navigate)(__BASE_PATH__ + pagePath + (!pagePath.includes(`?`) ? browserLoc.search : ``) + browserLoc.hash, {
       replace: true
     });
-  }
+  } // It's possible that sessionStorage can throw an exception if access is not granted, see https://github.com/gatsbyjs/gatsby/issues/34512
 
-  _loader.publicLoader.loadPage(browserLoc.pathname).then(page => {
+
+  const getSessionStorage = () => {
+    try {
+      return sessionStorage;
+    } catch {
+      return null;
+    }
+  };
+
+  _loader.publicLoader.loadPage(browserLoc.pathname + browserLoc.search).then(page => {
+    var _page$page;
+
+    const sessionStorage = getSessionStorage();
+
+    if (page !== null && page !== void 0 && (_page$page = page.page) !== null && _page$page !== void 0 && _page$page.webpackCompilationHash && page.page.webpackCompilationHash !== window.___webpackCompilationHash) {
+      // Purge plugin-offline cache
+      if (`serviceWorker` in navigator && navigator.serviceWorker.controller !== null && navigator.serviceWorker.controller.state === `activated`) {
+        navigator.serviceWorker.controller.postMessage({
+          gatsbyApi: `clearPathResources`
+        });
+      } // We have not matching html + js (inlined `window.___webpackCompilationHash`)
+      // with our data (coming from `app-data.json` file). This can cause issues such as
+      // errors trying to load static queries (as list of static queries is inside `page-data`
+      // which might not match to currently loaded `.js` scripts).
+      // We are making attempt to reload if hashes don't match, but we also have to handle case
+      // when reload doesn't fix it (possibly broken deploy) so we don't end up in infinite reload loop
+
+
+      if (sessionStorage) {
+        const isReloaded = sessionStorage.getItem(reloadStorageKey) === `1`;
+
+        if (!isReloaded) {
+          sessionStorage.setItem(reloadStorageKey, `1`);
+          window.location.reload(true);
+          return;
+        }
+      }
+    }
+
+    if (sessionStorage) {
+      sessionStorage.removeItem(reloadStorageKey);
+    }
+
     if (!page || page.status === _loader.PageResourceStatus.Error) {
       const message = `page resources for ${browserLoc.pathname} not found. Not rendering React`; // if the chunk throws an error we want to capture the real error
       // This should help with https://github.com/gatsbyjs/gatsby/issues/19618
@@ -145,7 +190,6 @@ window.___loader = _loader.publicLoader;
       throw new Error(message);
     }
 
-    window.___webpackCompilationHash = page.page.webpackCompilationHash;
     const SiteRoot = (0, _apiRunnerBrowser.apiRunner)(`wrapRootElement`, {
       element: /*#__PURE__*/_react.default.createElement(LocationHandler, null)
     }, /*#__PURE__*/_react.default.createElement(LocationHandler, null), ({
