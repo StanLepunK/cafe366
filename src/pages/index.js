@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 // GATSVBY
 import { graphql } from "gatsby";
 // GATSBY SHOPIFY REACT STARTER
-import { Layout } from "../components/layout";
+import { Layout } from "../components/layout/layout";
 import { ProductListing } from "../components/product/product_listing";
 import {
   container,
