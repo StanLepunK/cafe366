@@ -12,15 +12,15 @@ https://www.youtube.com/watch?v=17g0QZXRfQk
 export const MenuSmallImpl = () => {
   let res = Get_window();
   // const [pos, set_pos] = useState(-width)
-  const [height, set_height] = useState(0);
+  // const [height, set_height] = useState(0);
   const [width, set_width] = useState(res[0]/2);
   const [open, set_open] = useState(false);
-  const [pos, set_pos] = useState(50);
+  // const [pos, set_pos] = useState(50);
 
 
   const toggleMenu = () => {
     set_open(!open);
-    if(height > 0) set_height(0); else set_height(res[1]);
+    // if(height > 0) set_height(0); else set_height(res[1]);
   }
 
   return (
@@ -42,8 +42,7 @@ export const MenuSmallImpl = () => {
               <div className={[burger, "burger2"].join(" ")} />
               <div className={[burger, "burger3"].join(" ")} />
             </div>
-            <style jsx>{
-            `
+            <style>{`
               .burger1{
                   transform: ${ open ? 'rotate(45deg)' : 'rotate(0)'};
               }
@@ -56,9 +55,11 @@ export const MenuSmallImpl = () => {
             `}</style> 
           </div>
         </button>
-        <div className={content_menu_small}>{open ? <MenuContent /> : <></> }</div>
+        <div>{open ? <MenuContent /> : <></> }</div>
+        {/* <div className={content_menu_small}>{open ? <MenuContent /> : <></> }</div> */}
         
       </div>
+      {/* <div className={content_menu_small}>{open ? <MenuContent /> : <></> }</div> */}
     </Fragment>
   )
 }

@@ -1,16 +1,37 @@
+
+
+/*
+*
+* https://alvarotrigo.com/blog/hamburger-menu-css-responsive/
+*
+*/
+
 /* inspired from
  https://medium.com/javascript-in-plain-english/create-a-reusable-sidebar-component-with-react-d75cf48a053a 
  https://www.youtube.com/watch?v=17g0QZXRfQk
  */
  .nav_bar {
-  height: 100% !important;
+  height: 0%;
+  /* overflow: hidden; */
   text-align: center;
   /* border-right: 1px solid; */
   border-radius: 0;
   background-color: rgb(var(--orange_366_rgb));
   /* background-color: rgb(var(--noisette_rgb)); */
+  /*  transition: 0.8s ease; */
+  -webkit-transition: 0.8s ease;
+  -moz-transition: 0.8s ease;
+  -o-transition: 0.8s ease;
   transition: 0.8s ease;
 }
+
+
+ /* .nav_bar {
+  height: 100% !important;
+  text-align: center;
+  border-radius: 0;
+  background-color: rgb(var(--orange_366_rgb));
+} */
 
 .toggle_menu {
   height: 50px;
@@ -19,10 +40,15 @@
   /* background-color: rgb(var(--cafe_rgb)); */
 }
 
+
 .content_menu_small {
-  background-color: rgb(var(--orange_366_rgb));
+  /* height: 0%;; */
+  /* background-color: rgb(var(--cafe_rgb)); */
+  /* overflow: hidden; */
+  /* background-color: rgb(var(--orange_366_rgb)); */
   /* border: solid 1px white; */
 }
+
 
 /* inspired from https://github.com/aru120/hamburgerNav-demo/blob/main/components/Hamburger.js */
 .hamburger_container {
