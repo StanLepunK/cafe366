@@ -20,6 +20,7 @@ export const MenuSmallImpl = () => {
 
   return (
     <Fragment>
+      {/* BOUTON QUI NE DOIT PAS BOUGER */}
       <div style={{textAlign:`center`}}>
         <button
           onClick={() => toggleMenu()}
@@ -46,10 +47,12 @@ export const MenuSmallImpl = () => {
           </div>
         </button>
       </div>
-      <div className={[nav_bar, "move"].join(" ")}>
+      {/* CONTENU MENU QUI DOIT BOUGER TOTALEMENT */}
+      {open ? (<div className={[nav_bar, "move"].join(" ")}><MenuContent /></div>): (<div className={[nav_bar, "move"].join(" ")}></div>)}
+      {/* <div className={[nav_bar, "move"].join(" ")}> */}
         {/* <div>{open ? <div className={show}><MenuContent /></div> : <div className={hidden}><MenuContent /></div> }</div> */}
-        <MenuContent />
-      </div>
+        {/* <MenuContent />
+      </div> */}
       <style>{`
           .move {
             transform: ${open ? 'translatey(0)' : 'translatey(-400px)'};
