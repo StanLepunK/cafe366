@@ -70,11 +70,11 @@ function RenderSmall({className}) {
   )
 }
 
-export default function MenuContent({className}) {
-  if(className === undefined) {
+export default function MenuContent({className, style}) {
+  if(className === undefined && style === undefined) {
     return <RenderBig/>
-  } else {
-    return(<div className={className}>
+  } else  {
+    return(<div style={style} className={className}>
       <RenderSmall/>
     </div>)
   }

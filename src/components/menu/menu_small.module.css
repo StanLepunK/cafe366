@@ -47,9 +47,9 @@
   /* overflow: hidden; */
 }
 
-.menu_small_diplay_text {
+/* .offset_text {
   transform: translate(var(--size_menu_offset), -300px);
-}
+} */
 
 .menu_display_open {
   /* animate nav opening details end */

@@ -1,6 +1,14 @@
+.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 20;
+}
+
+
 .container {
   display: flex;
   align-items: center;
+  /* position: fixed; */
   position: sticky;
   z-index: 1;
   top: 0;
@@ -41,8 +49,8 @@
 /* LOGO / PICTO > BUTTON in this architecture */
 .picto {
   grid-area: picto;
-  width: var(--size-input);
-  height: var(--size-input);
+  width: var(--size-picto);
+  height: var(--size-picto);
   place-items: center;
   /* border: solid 1px white; */
 }

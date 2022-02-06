@@ -1,17 +1,19 @@
 // REACT
 import React from "react";
 import { Fragment, useContext } from "react";
+import {useState, useEffect} from "react";
 // CAFÉ 366
 // import { ContextMenu } from "../../context/context_menu";
 import { ContextMenu } from "../../context/context_menu";
 
 import MenuContent from "./menu_content"
 import {  toggle_menu, 
-          menu_display, menu_display_open, menu_small_diplay_text,
+          menu_display, menu_display_open, 
+          // offset_text,
           hamburger, burger, hamburger_container
         } from "./menu_small.module.css";
 // UTILS
-// import { Get_window } from "../../utils/canvas"
+import { Get_window } from "../../utils/canvas"
 /* inspired from
 * https://github.com/aru120/hamburgerNav-demo/blob/main/components/Hamburger.js
 * https://ramonak.io/posts/react-context-api-update-from-nested-component
@@ -22,17 +24,29 @@ export const DisplayMenuSmall = () => {
 
   const style_menu_close = [menu_display].join(" ");
   const style_menu_open = [menu_display, menu_display_open].join(" ");
-  if(!menu_small_is) {
-    console.log("style_menu_close", style_menu_close);
-  } else {
-    console.log("style_menu_open", style_menu_open);
-  }
+  // if(!menu_small_is) {
+  //   console.log("style_menu_close", style_menu_close);
+  // } else {
+  //   console.log("style_menu_open", style_menu_open);
+  // }
+  
+  const [offset_text, set_offset_text] = useState();
+  const height = Get_window()[1];
+  useEffect(() => {
+    console.log("height", height);
+    set_offset_text({
+    transform: `translate(-12px,`+(-(height) *0.3)+`px)`,
+    })
+  },[]);
+
+  // const pos_menu_text =[offset_menu_x_txt, offet_y].join(" ");
+  // const pos_menu_text =[offset_menu_x_txt].join(" ");
 
   return(
     <div>
       <div>{  menu_small_is ? 
-              (<div className={style_menu_open}><MenuContent className={menu_small_diplay_text}/></div>) :
-              (<div className={style_menu_close}><MenuContent className={menu_small_diplay_text}/></div>)
+              (<div className={style_menu_open}><MenuContent style={offset_text}/></div>) :
+              (<div className={style_menu_close}><MenuContent style={offset_text}/></div>)
             }</div>
       {/* <style>{`
       .move {
