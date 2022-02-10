@@ -1,19 +1,19 @@
 // REACT
 import React from "react";
 import { Fragment, useContext } from "react";
-import {useState, useEffect} from "react";
+// import {useState, useEffect} from "react";
 // CAFÉ 366
-// import { ContextMenu } from "../../context/context_menu";
 import { ContextMenu } from "../../context/context_menu";
 
 import MenuContent from "./menu_content"
 import {  toggle_menu, 
           menu_display, menu_display_open, 
-          // offset_text,
-          hamburger, burger, hamburger_container
+          offset_text,
+          hamburger, burger, hamburger_container,
+          bloca, blocb, blocc 
         } from "./menu_small.module.css";
 // UTILS
-import { Get_window } from "../../utils/canvas"
+// import { Get_window } from "../../utils/canvas"
 /* inspired from
 * https://github.com/aru120/hamburgerNav-demo/blob/main/components/Hamburger.js
 * https://ramonak.io/posts/react-context-api-update-from-nested-component
@@ -24,43 +24,21 @@ export const DisplayMenuSmall = () => {
 
   const style_menu_close = [menu_display].join(" ");
   const style_menu_open = [menu_display, menu_display_open].join(" ");
-  // if(!menu_small_is) {
-  //   console.log("style_menu_close", style_menu_close);
-  // } else {
-  //   console.log("style_menu_open", style_menu_open);
-  // }
-  
-  const [offset_text, set_offset_text] = useState();
-  const height = Get_window()[1];
-  useEffect(() => {
-    console.log("height", height);
-    set_offset_text({
-    transform: `translate(-12px,`+(-(height) *0.3)+`px)`,
-    })
-  },[]);
-
-  // const pos_menu_text =[offset_menu_x_txt, offet_y].join(" ");
-  // const pos_menu_text =[offset_menu_x_txt].join(" ");
 
   return(
     <div>
       <div>{  menu_small_is ? 
-              (<div className={style_menu_open}><MenuContent style={offset_text}/></div>) :
-              (<div className={style_menu_close}><MenuContent style={offset_text}/></div>)
+              (<div className={style_menu_open}><MenuContent className={offset_text}/></div>) :
+              (<div className={style_menu_close}><MenuContent className={offset_text}/></div>)
             }</div>
-      {/* <style>{`
-      .move {
-        transform: ${menu_small_is ? 'translatey(0)' : 'translatey(-400px)'};
-      }
-      `}</style>      */}
     </div>
   )
 }
 
 const ToggleMenuSmall = () => {
-  const { menu_small_is, set_open_menu_small } = useContext(ContextMenu);
+  const { menu_small_is, swap_menu_small } = useContext(ContextMenu);
   return (
-    <button className={toggle_menu} onClick={set_open_menu_small}>
+    <button className={toggle_menu} onClick={swap_menu_small}>
       <div className={hamburger_container}>
         <div className={hamburger}>
           <div className={[burger, "burger1"].join(" ")} />
@@ -99,3 +77,14 @@ export default function MenuSmall() {
   )
 }
 
+
+export function Test() {
+  return (<><div>
+      <div className={bloca}>derrière la montagne</div>
+      <div className={blocb}>à l'abris du soleil et du vent</div>
+      <div className={blocc}>pour se rapprocher des étoiles et du ciel</div>
+      <div className={bloca}>derrière la montagne</div>
+      <div className={blocb}>à l'abris du soleil et du vent</div>
+      <div className={blocc}>pour se rapprocher des étoiles et du ciel</div>
+  </div></>)
+}

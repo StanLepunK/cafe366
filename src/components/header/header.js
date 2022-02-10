@@ -8,11 +8,10 @@ import { useContext } from "react";
 import { ContextStore } from "../../context/context_store";
 // import Logo from "./../../icons/logo";
 // CAFE 366
-// import { ProviderMenu } from "../../context/context_menu";
 import { Menu } from "./../menu/menu";
-import { DisplayMenuSmall } from "./../menu/menu_small";
+// import { DisplayMenuSmall } from "./../menu/menu_small";
 import { CartButton } from "./../cart/cart_button";
-import { header, container, picto, fixed } from "./header.module.css";
+import { header, container, picto } from "./header.module.css";
 import "./header.module.css";
 import SearchIcon from "./../../icons/search";
 import { Toast } from "./toast";
@@ -58,42 +57,6 @@ export function Header() {
   const picto_tick = {
     filter: style_tick,
   };
-  /**
-   * To create an awesome navbar, who can discover at the bottom and be lock at the top
-   */
-  // https://medium.com/@ethantcollins98/making-a-sometimes-fixed-navbar-157013dfc4a5
-  // https://github.com/ethancollins0/FixedNavbar
-  // useEffect(() => {
-  //   window.addEventListener('scroll', () => {
-  //     // console.log("smoketest as componentDidMount");
-  //     const topBorder = document
-  //     .getElementById("navbar-container")
-  //     .getBoundingClientRect().top;
-
-  //   topBorder >= 0
-  //     ? document.getElementById("navbar").classList.remove("fixed")
-  //     : document.getElementById("navbar").classList.add("fixed");
-  //   })
-  //  }, [])
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', () => {
-  //     // console.log("smoketest as componentDidMount");
-  //     const topBorder = document
-  //     .getElementById({container})
-  //     .getBoundingClientRect().top;
-
-  //   topBorder >= 0
-  //     ? document.getElementById({header}).classList.remove({fixed})
-  //     : document.getElementById({header}).classList.add({fixed});
-  //   })
-  //  }, [])
-
-  // document.querySelector
-  // document.getElementsByName
-  // document.getElementsById
-  // document.getElementsByClassName
-  // document.getElementsByTagName
 
   return (
     <>
@@ -122,7 +85,6 @@ export function Header() {
           </Toast>
         </div>
       </div>
-      <DisplayMenuSmall/>
     </>
   );
 }

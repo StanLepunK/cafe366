@@ -44,12 +44,12 @@ function RenderBig() {
 }
 
 
-function RenderSmall({className}) {
+function RenderSmall() {
   const [prods, set_prods] = useState(
     content_by_lang(content.collection, "all products", "ALL PRODUCTS")
   );
   return(
-    <div className={className}>
+    <div>
       {GetCollections().map((elem) => {
       if (elem.handle !== "frontpage") {
         return <LinkMenu id={elem.handle} path="/collection/" title={elem.title}/>;
