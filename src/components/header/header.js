@@ -7,11 +7,15 @@ import { useContext } from "react";
 import { ContextStore } from "../../context/context_store";
 // CAFE 366
 import { Menu } from "./../menu/menu";
-import { CartButton } from "./../cart/cart_button";
+
 import { header, container, logo, cart } from "./header.module.css";
 import "./header.module.css";
 import SearchIcon from "./../../icons/search";
+
 import { Select, SelectAnimation } from "./select";
+
+import { CartButton } from "./../cart/cart_button";
+import { Panier }  from "./../../icons/picto";
 
 // CAFE 366
 import { Logo }  from "./../../icons/picto";
@@ -44,7 +48,8 @@ export function Header() {
             {/* <Link to="/search" className={searchButton}>
               <SearchIcon />
             </Link> */}
-            <CartButton quantity={quantity} classNameContainer={cart}/>
+            <Panier classNameContainer={cart}/>
+            {/* <CartButton quantity={quantity} classNameContainer={cart}/> */}
           </header>
           
           <Select show={loading || did_just_add_to_cart} >

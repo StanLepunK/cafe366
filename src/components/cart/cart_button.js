@@ -26,20 +26,20 @@ const style_test = {
   border: "solid 1px white"
 }
 
-export function CartButton({ quantity, classNameContainer }) {
-  return (
-  <Panier styleContainer={style_test}/>
-  );
-}
+// export function CartButton({ quantity, classNameContainer }) {
+//   return (
+//   <Panier styleContainer={style_test}/>
+//   );
+// }
 
 // {quantity > 0 ? <div className={quantity_design}>{quantity}</div> : null}
 // <div className={classNameContainer}>
 
-// export function CartButton({ quantity, classNameContainer }) {
-//   return (
-//     <div style={style_test}>
-//       <Panier/>
-//       <div className={quantity_design}>{quantity}</div>
-//     </div>
-//   );
-// }
+export function CartButton({ quantity, classNameContainer }) {
+  return (
+    <div style={style_test}>
+      <Panier/>
+      <div className={quantity_design}>{quantity}</div>
+    </div>
+  );
+}
