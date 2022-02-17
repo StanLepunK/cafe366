@@ -28,11 +28,18 @@ const style_test = {
 
 export function CartButton({ quantity, classNameContainer }) {
   return (
-    <div style={style_test}>
-    {/* <div className={classNameContainer}> */}
-      <Panier/>
-      <div className={quantity_design}>{quantity}</div>
-      {/* {quantity > 0 ? <div className={quantity_design}>{quantity}</div> : null} */}
-    </div>
+  <Panier styleContainer={style_test}/>
   );
 }
+
+// {quantity > 0 ? <div className={quantity_design}>{quantity}</div> : null}
+// <div className={classNameContainer}>
+
+// export function CartButton({ quantity, classNameContainer }) {
+//   return (
+//     <div style={style_test}>
+//       <Panier/>
+//       <div className={quantity_design}>{quantity}</div>
+//     </div>
+//   );
+// }
