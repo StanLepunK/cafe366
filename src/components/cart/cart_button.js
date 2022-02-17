@@ -37,7 +37,8 @@ const style_test = {
 
 export function CartButton({ quantity, classNameContainer }) {
   return (
-    <div style={style_test}>
+    // <div style={style_test}>
+    <div className={classNameContainer}>
       <Panier/>
       <div className={quantity_design}>{quantity}</div>
     </div>
