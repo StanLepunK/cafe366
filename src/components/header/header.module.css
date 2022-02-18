@@ -87,12 +87,12 @@
 /* Ici, je ne comprends pas bien à quoi cela sert */
 .header::after {
   grid-area: menu_big;
-  content: "";
+  /* content: "";
   display: block;
   width: var(--space-2xl);
   z-index: 1;
   align-self: stretch;
-  justify-self: flex-end;
+  justify-self: flex-end; */
 }
 
 
@@ -100,7 +100,6 @@
 
 @media (max-width: 640px) {
   .header {
-
     grid-template-areas: "logo menu_small cart_area";
     /* grid-template-columns: var(--size-input) 1fr; */
     /* grid-template-areas: "cart menu_small logo"; */
