@@ -23,9 +23,14 @@
 }
 
 .cart {
-  grid-area: cart;
+  /* grid-area: cart;
   width: var(--size_cart);
   height: var(--size_cart);
+  place-items: center;
+  border: solid 1px white; */
+  grid-area: cart;
+  width: var(--size_logo);
+  height: var(--size_logo);
   place-items: center;
   border: solid 1px white;
 }
