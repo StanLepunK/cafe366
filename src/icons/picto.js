@@ -13,7 +13,8 @@ import tick from "./../../media/picto/tick.svg";
 
 
 export function Panier({styleContainer, classNameContainer}) {
-  return(<Picto src={panier} alt="panier" to="/cart"  styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
+  // return(<Picto src={panier} alt="panier" to="/cart" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
+  return(<Picto src={panier} alt="panier" to="/" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
 }
 
 export function Logo({styleContainer, classNameContainer}) {
@@ -25,7 +26,7 @@ export function Facebook({style, classNameContainer}) {
 }
 
 export function Instagram({style, classNameContainer}) {
-  return(<Picto src={instagram} alt="instagram"  href="https://www.instagram.com/cafe366/" stylePicto={style} classNameContainer={classNameContainer}/>)
+  return(<Picto src={instagram} alt="instagram" href="https://www.instagram.com/cafe366/" stylePicto={style} classNameContainer={classNameContainer}/>)
 }
 
 export function Tick({classNameContainer}) {
