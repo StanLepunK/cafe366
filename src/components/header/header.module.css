@@ -1,4 +1,7 @@
-
+/* HEADER DESIGN
+* 2021-2022 
+* v 0.2.0
+*/
 .container {
   display: flex;
   align-items: center;
@@ -16,31 +19,25 @@
 /* LOGO / PICTO > BUTTON in this architecture */
 .logo {
   grid-area: logo;
-  width: var(--size_logo);
-  height: var(--size_logo);
+  width: var(--size_picto_header);
+  height: var(--size_picto_header);
   place-items: center;
-  border: solid 1px white;
+  /* border: solid 1px white; */
 }
 
 .cart {
-  /* grid-area: cart_area;
-  width: var(--size_cart);
-  height: var(--size_cart);
+  grid-area: cart;
+  width: var(--size_picto_header);
+  height: var(--size_picto_header);
   place-items: center;
-  border: solid 1px white; */
-  grid-area: cart_area;
-  width: var(--size_logo);
-  height: var(--size_logo);
-  place-items: center;
-  border: solid 1px white;
+  /* border: solid 1px white; */
 }
 
 
 /* MENU CONTENT */
 .menu_big {
   grid-area: menu_big;
-  /* align-self: stretch; */
-  border: solid 1px white;
+  /* border: solid 1px white; */
 }
 
 .menu_small {
@@ -75,46 +72,29 @@
   width: 100%;
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr;
-  /* grid-template-columns: var(--size-input) 1fr min-content min-content; */
-
-  grid-template-areas: "logo menu_small cart_area";
-  /* grid-template-areas: "logo menu_big cart_area"; */
-  /* grid-template-areas: "logo menu_big . . cart"; */
-  /* grid-template-areas: "cart menu_big . . logo"; */
-  /* background-color: var(--background_header); */
+  grid-template-areas: "logo menu_small cart";
   /* border: solid 1px white; */
 }
 
 /* Ici, je ne comprends pas bien à quoi cela sert */
 .header::after {
   grid-area: menu_small;
-  /* grid-area: menu_big; */
-  /* content: "";
-  display: block;
-  width: var(--space-2xl);
-  z-index: 1;
-  align-self: stretch;
-  justify-self: flex-end; */
 }
 
 
 
 @media (min-width: 640px) {
   .header {
-    grid-template-areas: "logo menu_big cart_area";
+    grid-template-areas: "logo menu_big cart";
+    grid-gap: var(--size-gap);
   }
 
   .header::after {
     grid-area: menu_big;
   }
+
+  .menu_big {
+    width: calc(var(--layout_max) - var(--size_picto_header) - var(--size_picto_header));
+    /* border: solid 1px white; */
+  }
 }
-
-/* @media (max-width: 640px) {
-  .header {
-    grid-template-areas: "logo menu_small cart_area";
-  }
-
-  .header::after {
-    grid-area: menu_small;
-  }
-} */

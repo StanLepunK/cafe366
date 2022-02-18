@@ -10,20 +10,6 @@ import { quantity_design } from "./cart.module.css";
 import { Panier }  from "./../../icons/picto";
 
 
-// const panier_style = {
-//   margin: "0 auto",
-//   width: "25px",
-//   height: "25px",
-// };
-
-// const style_test = {
-//   gridArea: "cart",
-//   width: "var(--size_cart)",
-//   height: "var(--size_cart)",
-//   placeItems: "center",
-//   border: "solid 1px white"
-// }
-
 // export function CartButton({ quantity, classNameContainer }) {
 //   return (
 //   <Panier styleContainer={style_test}/>
@@ -35,7 +21,6 @@ import { Panier }  from "./../../icons/picto";
 
 export function CartButton({ quantity, classNameContainer }) {
   return (
-    // <div style={style_test}>
     <div className={classNameContainer}>
       <Panier/>
       <div className={quantity_design}>{quantity}</div>
