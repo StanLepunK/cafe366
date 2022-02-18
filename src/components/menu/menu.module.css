@@ -1,10 +1,17 @@
-.nav_style {
+.container {
+  width: 400px;
   display: flex;
-  flex-direction: row;
+  border: solid 1px white;
+}
+
+.nav_style {
+  /* display: flex;
+  flex-direction: row; */
   align-items: center;
   /* overflow-x: auto; */
   white-space: nowrap;
   font-weight: var(--bold);
+
 
 }
 

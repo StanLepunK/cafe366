@@ -4,7 +4,7 @@ import { useState } from "react";
 // GATSBY
 import { Link } from "gatsby";
 // CAFE 366
-import { nav_link, active_link } from "./menu.module.css";
+import { nav_link, active_link, container } from "./menu.module.css";
 import content from "../../../media/json/content.json";
 import { content_by_lang } from "../../utils/misc";
 import GetPages from "./get_pages";
@@ -23,22 +23,24 @@ function RenderBig() {
 
   return(
     <>
-      {GetCollections().map((elem) => {
-      if (elem.handle !== "frontpage") {
-        return <LinkMenu id={elem.handle} path="/collection/" title={elem.title}/>;
-      }
-      })}
-      <Link
-        key="All"
-        className={nav_link}
-        to="/product/"
-        activeClassName={active_link}
-      >
-        {prods}
-      </Link>
-      {GetPages().map((elem) => {
-        return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
-      })}
+      {/* <div className={container}> */}
+        {GetCollections().map((elem) => {
+        if (elem.handle !== "frontpage") {
+          return <LinkMenu id={elem.handle} path="/collection/" title={elem.title}/>;
+        }
+        })}
+        <Link
+          key="All"
+          className={nav_link}
+          to="/product/"
+          activeClassName={active_link}
+        >
+          {prods}
+        </Link>
+        {GetPages().map((elem) => {
+          return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+        })}
+      {/* </div> */}
     </>)
 }
 
@@ -70,7 +72,7 @@ function RenderSmall() {
 
 export default function MenuContent({className, style}) {
   if(className === undefined && style === undefined) {
-    return <RenderBig/>
+    return <div className={container}><RenderBig/></div>
   } else  {
     return(<div style={style} className={className}>
       <RenderSmall/>
