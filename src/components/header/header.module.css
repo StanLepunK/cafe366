@@ -105,4 +105,8 @@
     /* grid-template-columns: var(--size-input) 1fr; */
     /* grid-template-areas: "cart menu_small logo"; */
   }
+
+  .header::after {
+    grid-area: menu_small;
+  }
 }
