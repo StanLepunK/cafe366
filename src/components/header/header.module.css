@@ -22,7 +22,7 @@
   width: var(--size_picto_header);
   height: var(--size_picto_header);
   place-items: center;
-  /* border: solid 1px white; */
+  border: solid 1px white;
 }
 
 .cart {
@@ -30,14 +30,14 @@
   width: var(--size_picto_header);
   height: var(--size_picto_header);
   place-items: center;
-  /* border: solid 1px white; */
+  border: solid 1px white;
 }
 
 
 /* MENU CONTENT */
 .menu_big {
   grid-area: menu_big;
-  /* border: solid 1px white; */
+  border: solid 1px white;
 }
 
 .menu_small {
