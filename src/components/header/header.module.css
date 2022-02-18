@@ -40,7 +40,7 @@
 .menu_big {
   grid-area: menu_big;
   /* align-self: stretch; */
-  /* border: solid 1px white; */
+  border: solid 1px white;
 }
 
 .menu_small {
@@ -77,7 +77,8 @@
   grid-template-columns: var(--size-input) 1fr;
   /* grid-template-columns: var(--size-input) 1fr min-content min-content; */
 
-  grid-template-areas: "logo menu_big cart_area";
+  grid-template-areas: "logo menu_small cart_area";
+  /* grid-template-areas: "logo menu_big cart_area"; */
   /* grid-template-areas: "logo menu_big . . cart"; */
   /* grid-template-areas: "cart menu_big . . logo"; */
   /* background-color: var(--background_header); */
@@ -86,7 +87,8 @@
 
 /* Ici, je ne comprends pas bien à quoi cela sert */
 .header::after {
-  grid-area: menu_big;
+  grid-area: menu_small;
+  /* grid-area: menu_big; */
   /* content: "";
   display: block;
   width: var(--space-2xl);
@@ -97,15 +99,22 @@
 
 
 
+@media (min-width: 640px) {
+  .header {
+    grid-template-areas: "logo menu_big cart_area";
+  }
 
-@media (max-width: 640px) {
+  .header::after {
+    grid-area: menu_big;
+  }
+}
+
+/* @media (max-width: 640px) {
   .header {
     grid-template-areas: "logo menu_small cart_area";
-    /* grid-template-columns: var(--size-input) 1fr; */
-    /* grid-template-areas: "cart menu_small logo"; */
   }
 
   .header::after {
     grid-area: menu_small;
   }
-}
+} */

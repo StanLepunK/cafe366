@@ -6,7 +6,7 @@
 // REACT
 import * as React from "react";
 // CAFE 366
-import { container, quantity_design } from "./cart.module.css";
+import { quantity_design } from "./cart.module.css";
 import { Panier }  from "./../../icons/picto";
 
 
@@ -16,15 +16,13 @@ import { Panier }  from "./../../icons/picto";
 //   height: "25px",
 // };
 
-const style_test = {
-  gridArea: "cart",
-  // width: "var(--size_cart)",
-  // height: "var(--size_cart)",
-  width: "48px",
-  height: "48px",
-  placeItems: "center",
-  border: "solid 1px white"
-}
+// const style_test = {
+//   gridArea: "cart",
+//   width: "var(--size_cart)",
+//   height: "var(--size_cart)",
+//   placeItems: "center",
+//   border: "solid 1px white"
+// }
 
 // export function CartButton({ quantity, classNameContainer }) {
 //   return (
