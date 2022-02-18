@@ -43,7 +43,7 @@ export function Header() {
           {/* barre de navigation */}
           <header className={header}>
             <Logo classNameContainer={logo}/>
-            <Menu/>
+            {/* <Menu/> */}
             <Logo classNameContainer={cart}/>
             {/* REASEARH */}
             {/* <Link to="/search" className={searchButton}>
