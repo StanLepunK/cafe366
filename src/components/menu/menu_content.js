@@ -72,8 +72,8 @@ function RenderSmall() {
 
 export default function MenuContent({className, style}) {
   if(className === undefined && style === undefined) {
-    return <div className={container}></div>
-    // return <div className={container}><RenderBig/></div>
+    // return <div className={container}></div>
+    return <RenderBig/>
   } else  {
     return(<div style={style} className={className}>
       <RenderSmall/>

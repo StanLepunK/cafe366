@@ -2,14 +2,14 @@
 import * as React from "react";
 import { useContext } from "react";
 // GATSBY SHOPYFY STARTER
-import { nav_style } from "./menu.module.css";
+import { nav_style, container } from "./menu.module.css";
 import { menu_big, menu_small } from "../header/header.module.css";
 // CAFÉ 366
 import MenuSmall from "./menu_small";
 import MenuContent from "./menu_content";
 import { ContextMenu } from "../../context/context_menu";
 // UTILS
-import { Get_window, Get_width } from "../../utils/canvas";
+import { Get_width } from "../../utils/canvas";
 
 /**
  * https://www.gatsbyjs.com/docs/reference/routing/file-system-route-api/
@@ -26,9 +26,10 @@ export function Menu() {
   if(Get_width() > 640) {
     switch_off_menu_small();
     return (
-      <nav className={[nav_style, menu_big].join(" ")}>
-        <MenuContent/> 
-      </nav>
+      <div className={container}></div>
+      // <nav className={[nav_style, menu_big].join(" ")}>
+      //   <MenuContent/> 
+      // </nav>
     );
   } else {
     return (
