@@ -1,4 +1,9 @@
-.productCardStyle {
+/**
+ * CARD PRODUCT DESIGN
+ *  2021-2022
+ * v 0.1.0
+ * */
+ .productCardStyle {
   max-width: 400px;
   cursor: pointer;
   text-decoration: none;
@@ -17,17 +22,19 @@
   font-weight: var(--semibold);
 }
 
-.productHeadingStyle {
+.product_title {
   width: 100%;
   font-size: var(--text-lg);
-  text-align: center;
+  text-align: left;
   overflow: hidden;
   text-overflow: ellipsis;
   line-height: var(--dense);
 }
 
-.productPrice {
+.product_price {
+  width: 100%;
   color: var(--text-color-secondary);
+  text-align: left;
 }
 
 .productVendorStyle {

@@ -117,6 +117,8 @@
 
   /* size display */
   --width_max: 1024px;
+  /* Something wronf with the 640px value that diffenrent between CSS and the Javascript part, smaller in JS */
+  --layout_max: 640px;
 
 
 
