@@ -48,7 +48,7 @@
 /* SEARCH BUTTON */
 .searchButton {
   color: var(--text-color-secondary);
-  grid-area: searchButton;
+  grid-area: search_button;
   width: var(--size-input);
   height: var(--size-input);
   display: grid;
@@ -67,7 +67,8 @@
 /* GLOBAL ARCHITECTURE */
 .header {
   display: grid;
-  max-width: var(--width_max);
+  max-width: var(--layout_max);
+  /* max-width: var(--width_max); */
   margin: 0 auto;
   width: 100%;
   padding: var(--size-gap) var(--size-gutter);
