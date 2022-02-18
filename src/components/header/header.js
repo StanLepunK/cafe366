@@ -48,8 +48,8 @@ export function Header() {
             {/* <Link to="/search" className={searchButton}>
               <SearchIcon />
             </Link> */}
-            {/* <Panier classNameContainer={cart}/> */}
-            <CartButton quantity={quantity} classNameContainer={cart}/>
+            <Panier classNameContainer={cart}/>
+            {/* <CartButton quantity={quantity} classNameContainer={cart}/> */}
           </header>
           
           <Select show={loading || did_just_add_to_cart} >
