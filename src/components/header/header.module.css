@@ -16,13 +16,15 @@
 /* GLOBAL ARCHITECTURE */
 .header {
   display: grid;
-  max-width:  var(--width_max);
+  max-width: var(--width_max);
   margin: 0 auto;
   width: 100%;
   padding: var(--size-gap) var(--size-gutter);
-  grid-template-columns: var(--size-input) 1fr min-content min-content;
+  grid-template-columns: var(--size-input) 1fr;
+  /* grid-template-columns: var(--size-input) 1fr min-content min-content; */
 
-  grid-template-areas: "logo menu_big . . cart";
+  grid-template-areas: "logo menu_big cart";
+  /* grid-template-areas: "logo menu_big . . cart"; */
   /* grid-template-areas: "cart menu_big . . logo"; */
   /* background-color: var(--background_header); */
   /* border: solid 1px white; */
@@ -91,7 +93,9 @@
 
 @media (max-width: 640px) {
   .header {
+
     grid-template-areas: "logo menu_small cart";
+    /* grid-template-columns: var(--size-input) 1fr; */
     /* grid-template-areas: "cart menu_small logo"; */
   }
 }
