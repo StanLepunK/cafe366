@@ -66,14 +66,22 @@
 
 /* GLOBAL ARCHITECTURE */
 .header {
-  display: grid;
-  max-width: var(--layout_max);
-  /* max-width: var(--width_max); */
+
+  
   margin: 0 auto;
-  width: 100%;
   padding: var(--size-gap) var(--size-gutter);
+  /* GRID */
+  
+  /* display: grid;
+  width: 100%;
+  max-width: var(--layout_max);
   grid-template-columns: var(--size-input) 1fr;
-  grid-template-areas: "logo menu_small cart";
+  grid-template-areas: "logo menu_small cart"; */
+
+  /* FLEX */
+  max-width: var(--layout_max);
+  display: flex;
+  justify-content: space-between;
   /* border: solid 1px white; */
 }
 
