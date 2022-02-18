@@ -39,7 +39,7 @@
 /* MENU CONTENT */
 .menu_big {
   grid-area: menu_big;
-  align-self: stretch;
+  /* align-self: stretch; */
   /* border: solid 1px white; */
 }
 
