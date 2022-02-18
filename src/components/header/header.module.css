@@ -13,33 +13,7 @@
   /* border: solid 1px white; */
 }
 
-/* GLOBAL ARCHITECTURE */
-.header {
-  display: grid;
-  max-width: var(--width_max);
-  margin: 0 auto;
-  width: 100%;
-  padding: var(--size-gap) var(--size-gutter);
-  grid-template-columns: var(--size-input) 1fr;
-  /* grid-template-columns: var(--size-input) 1fr min-content min-content; */
 
-  grid-template-areas: "logo menu_big cart";
-  /* grid-template-areas: "logo menu_big . . cart"; */
-  /* grid-template-areas: "cart menu_big . . logo"; */
-  /* background-color: var(--background_header); */
-  /* border: solid 1px white; */
-}
-
-/* Ici, je ne comprends pas bien à quoi cela sert */
-.header::after {
-  grid-area: menu_big;
-  content: "";
-  display: block;
-  width: var(--space-2xl);
-  z-index: 1;
-  align-self: stretch;
-  justify-self: flex-end;
-}
 
 
 /* LOGO / PICTO > BUTTON in this architecture */
@@ -48,7 +22,7 @@
   width: var(--size_logo);
   height: var(--size_logo);
   place-items: center;
-  /* border: solid 1px white; */
+  border: solid 1px white;
 }
 
 .cart {
@@ -56,7 +30,7 @@
   width: var(--size_cart);
   height: var(--size_cart);
   place-items: center;
-  /* border: solid 1px white; */
+  border: solid 1px white;
 }
 
 
@@ -89,6 +63,37 @@
 .searchButton[aria-current="page"] {
   color: var(--color_primary);
 }
+
+
+/* GLOBAL ARCHITECTURE */
+.header {
+  display: grid;
+  max-width: var(--width_max);
+  margin: 0 auto;
+  width: 100%;
+  padding: var(--size-gap) var(--size-gutter);
+  grid-template-columns: var(--size-input) 1fr;
+  /* grid-template-columns: var(--size-input) 1fr min-content min-content; */
+
+  grid-template-areas: "logo menu_big cart";
+  /* grid-template-areas: "logo menu_big . . cart"; */
+  /* grid-template-areas: "cart menu_big . . logo"; */
+  /* background-color: var(--background_header); */
+  /* border: solid 1px white; */
+}
+
+/* Ici, je ne comprends pas bien à quoi cela sert */
+.header::after {
+  grid-area: menu_big;
+  content: "";
+  display: block;
+  width: var(--space-2xl);
+  z-index: 1;
+  align-self: stretch;
+  justify-self: flex-end;
+}
+
+
 
 
 @media (max-width: 640px) {
