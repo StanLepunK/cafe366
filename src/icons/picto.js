@@ -14,7 +14,8 @@ import tick from "./../../media/picto/tick.svg";
 
 export function Panier({styleContainer, classNameContainer}) {
   // return(<Picto src={panier} alt="panier" to="/cart" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
-  return(<Picto src={panier} alt="panier" to="/" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
+  // return(<Picto src={panier} alt="panier" to="/" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
+  return (<Picto src={logo_366} alt="café 366" to="/" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
 }
 
 export function Logo({styleContainer, classNameContainer}) {
