@@ -42,8 +42,8 @@ export function Header() {
         <div className={container}>
           {/* barre de navigation */}
           <header className={header}>
-            {/* <Logo classNameContainer={logo}/>
-            <Menu/> */}
+            <Logo classNameContainer={logo}/>
+            {/* <Menu/> */}
             {/* REASEARH */}
             {/* <Link to="/search" className={searchButton}>
               <SearchIcon />
