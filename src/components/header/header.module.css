@@ -1,4 +1,8 @@
-
+/**
+* HEADER DESIGN
+* 2021-2022
+* V 0.1.1
+*/
 .container {
   display: flex;
   align-items: center;
@@ -15,13 +19,9 @@
   display: grid;
   width: 100%;
   max-width: var(--width_max);
-
-  /* margin: 0 auto; */
-
   /* max-width: var(--layout_max); */
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr;
-
   grid-template-areas: "logo menu_small cart";
   /* border: solid 1px white; */
 }
@@ -29,15 +29,7 @@
 /* Ici, je ne comprends pas bien à quoi cela sert */
 .header::after {
   grid-area: menu_small;
-  content: "";
-  display: block;
-  width: var(--space-2xl);
-  z-index: 1;
-  align-self: stretch;
-  justify-self: flex-end;
 }
-
-
 
 
 /* LOGO / PICTO > BUTTON in this architecture */
@@ -49,11 +41,30 @@
   /* border: solid 1px white; */
 }
 
-.cart {
+.cart_container {
   grid-area: cart;
   width: var(--size_picto_header);
   height: var(--size_picto_header);
   place-items: center;
+  /* border: solid 1px white; */
+}
+
+.cart_picto {
+  /* display: flex; */
+  /* display: inline-block; */
+  
+  width: var(--size_cart);
+  height: var(--size_cart);
+  /* justify-content: center; */
+  transform: translatey(3px);
+  /* padding-bottom: var(--space-sm); */
+  margin: 0 auto;
+  
+  /* vertical-align: middle; */
+  /* text-align: center; */
+  
+  /* align-items: center; */
+  /* place-items: center; */
   /* border: solid 1px white; */
 }
 

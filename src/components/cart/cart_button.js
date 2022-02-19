@@ -1,7 +1,7 @@
 /**
  * CART BUTTON
  * 2022
- * v 0.0.2
+ * v 0.0.3
  */
 // REACT
 import * as React from "react";
@@ -10,19 +10,13 @@ import { quantity_design } from "./cart.module.css";
 import { Panier }  from "./../../icons/picto";
 
 
-// export function CartButton({ quantity, classNameContainer }) {
-//   return (
-//   <Panier styleContainer={style_test}/>
-//   );
-// }
-
 // {quantity > 0 ? <div className={quantity_design}>{quantity}</div> : null}
 // <div className={classNameContainer}>
 
-export function CartButton({ quantity, classNameContainer }) {
+export function CartButton({ quantity, classNameContainer, classNamePicto }) {
   return (
     <div className={classNameContainer}>
-      <Panier/>
+      <Panier classNamePicto={classNamePicto}/>
       <div className={quantity_design}>{quantity}</div>
     </div>
   );

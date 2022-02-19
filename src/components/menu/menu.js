@@ -21,7 +21,7 @@ import { Get_width } from "../../utils/canvas";
 export function Menu() {
   const { switch_off_menu_small } = useContext(ContextMenu);
 
-  if(Get_width() > 640) {
+  if(Get_width() >= 640) {
     switch_off_menu_small();
     return (
       <nav className={[nav_style, menu_big].join(" ")}>

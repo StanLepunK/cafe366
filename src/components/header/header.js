@@ -8,14 +8,13 @@ import { ContextStore } from "../../context/context_store";
 // CAFE 366
 import { Menu } from "./../menu/menu";
 
-import { header, container, logo, cart } from "./header.module.css";
+import { header, container, logo, cart_container, cart_picto } from "./header.module.css";
 import "./header.module.css";
 import SearchIcon from "./../../icons/search";
 
 import { Select, SelectAnimation } from "./select";
 
 import { CartButton } from "./../cart/cart_button";
-import { Panier }  from "./../../icons/picto";
 
 // CAFE 366
 import { Logo }  from "./../../icons/picto";
@@ -48,7 +47,7 @@ export function Header() {
             {/* <Link to="/search" className={searchButton}>
               <SearchIcon />
             </Link> */}
-            <CartButton quantity={quantity} classNameContainer={cart}/>
+            <CartButton quantity={quantity} classNameContainer={cart_container} classNamePicto={cart_picto}/>
             <Menu/>
           </header>
           
