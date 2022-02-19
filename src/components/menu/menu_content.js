@@ -20,35 +20,31 @@ import LinkMenu from "./link_menu";
 
 function RenderBig() {
   const prods = useState(content_by_lang(content.collection, "all products", "ALL PRODUCTS"));
-  // console.log("RenderBig()", prods);
-  // console.log("GetCollections()",GetCollections());
 
   return(
     <>
-      {/* <div className={container}> */}
-        {GetCollections().map((elem) => {
-        if (elem.handle !== "frontpage") {
-          return <LinkMenu id={elem.handle} path="/collection/" title={elem.title}/>;
-        }
-        })}
-        <Link
-          key="All"
-          className={nav_link}
-          to="/product/"
-          activeClassName={active_link}
-        >
-          {prods}
-        </Link>
-        {GetPages().map((elem) => {
-          return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
-        })}
-      {/* </div> */}
+      {GetCollections().map((elem) => {
+      if (elem.handle !== "frontpage") {
+        return <LinkMenu id={elem.handle} path="/collection/" title={elem.title}/>;
+      }
+      })}
+      <Link
+        key="All"
+        className={nav_link}
+        to="/product/"
+        activeClassName={active_link}
+      >
+        {prods}
+      </Link>
+      {GetPages().map((elem) => {
+        return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+      })}
     </>)
 }
 
 
 function RenderSmall() {
-  const prods = useState(content_by_lang(content.collection, "all products", "ALL PRODUCTS"));
+  const prods = useState(content_by_lang(content.collection, "all products", ""));
 
   return(
     <div>
@@ -74,8 +70,7 @@ function RenderSmall() {
 
 export default function MenuContent({className, style}) {
   if(className === undefined && style === undefined) {
-    return <div className={container}></div>
-    // return <RenderBig/>
+    return <RenderBig/>
   } else  {
     return(<div style={style} className={className}>
       <RenderSmall/>

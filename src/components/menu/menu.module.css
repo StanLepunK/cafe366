@@ -2,14 +2,14 @@
   width: 400px;
   height: 48px;
   /* display: flex; */
-  border: solid 1px white;
+  /* border: solid 1px white; */
 }
 
 .nav_style {
   display: flex;
   flex-direction: row;
   align-items: center;
-  /* overflow-x: auto; */
+  overflow-x: auto;
   white-space: nowrap;
   font-weight: var(--bold);
 
