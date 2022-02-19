@@ -21,9 +21,10 @@ import { Get_width } from "../../utils/canvas";
 export function Menu() {
   const { switch_off_menu_small } = useContext(ContextMenu);
   // let res = Get_window();
-
+  console.log("Get_width()",Get_width());
   // if(res[0] > 640) {
   if(Get_width() > 640) {
+    console.log("BIG ONE");
     switch_off_menu_small();
     return (
       <div className={container}></div>
