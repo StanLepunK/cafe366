@@ -27,10 +27,10 @@ export function Menu() {
     console.log("BIG ONE");
     switch_off_menu_small();
     return (
-      <div className={container}></div>
-      // <nav className={[nav_style, menu_big].join(" ")}>
-      //   <MenuContent/> 
-      // </nav>
+      // <div className={container}></div>
+      <nav className={[nav_style, menu_big].join(" ")}>
+        <MenuContent/> 
+      </nav>
     );
   } else {
     return (
