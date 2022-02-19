@@ -2,7 +2,7 @@
 import * as React from "react";
 import { useContext } from "react";
 // GATSBY SHOPYFY STARTER
-import { nav_style, container } from "./menu.module.css";
+import { nav_style } from "./menu.module.css";
 import { menu_big, menu_small } from "../header/header.module.css";
 // CAFÉ 366
 import MenuSmall from "./menu_small";

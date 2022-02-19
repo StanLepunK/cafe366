@@ -23,6 +23,7 @@ function RenderBig() {
 
   return(
     <>
+      <div></div>
       {GetCollections().map((elem) => {
       if (elem.handle !== "frontpage") {
         return <LinkMenu id={elem.handle} path="/collection/" title={elem.title}/>;
@@ -39,6 +40,7 @@ function RenderBig() {
       {GetPages().map((elem) => {
         return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
       })}
+      <div></div>
     </>)
 }
 

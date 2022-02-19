@@ -10,6 +10,33 @@
   /* border: solid 1px white; */
 }
 
+/* GLOBAL ARCHITECTURE */
+.header {
+  display: grid;
+  width: 100%;
+  max-width: var(--width_max);
+
+  /* margin: 0 auto; */
+
+  /* max-width: var(--layout_max); */
+  padding: var(--size-gap) var(--size-gutter);
+  grid-template-columns: var(--size-input) 1fr;
+
+  grid-template-areas: "logo menu_small cart";
+  /* border: solid 1px white; */
+}
+
+/* Ici, je ne comprends pas bien à quoi cela sert */
+.header::after {
+  grid-area: menu_small;
+  content: "";
+  display: block;
+  width: var(--space-2xl);
+  z-index: 1;
+  align-self: stretch;
+  justify-self: flex-end;
+}
+
 
 
 
@@ -61,23 +88,7 @@
 }
 
 
-/* GLOBAL ARCHITECTURE */
-.header {
-  display: grid;
-  max-width: var(--width_max);
-  margin: 0 auto;
-  width: 100%;
-  padding: var(--size-gap) var(--size-gutter);
-  grid-template-columns: var(--size-input) 1fr;
 
-  grid-template-areas: "logo menu_small cart";
-  /* border: solid 1px white; */
-}
-
-/* Ici, je ne comprends pas bien à quoi cela sert */
-.header::after {
-  grid-area: menu_small;
-}
 
 
 
