@@ -20,8 +20,8 @@ import LinkMenu from "./link_menu";
 
 function RenderBig() {
   const prods = useState(content_by_lang(content.collection, "all products", "ALL PRODUCTS"));
-  console.log("RenderBig()", prods);
-  console.log("GetCollections()",GetCollections());
+  // console.log("RenderBig()", prods);
+  // console.log("GetCollections()",GetCollections());
 
   return(
     <>
