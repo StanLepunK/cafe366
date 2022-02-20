@@ -24,8 +24,9 @@ export default function Page({data}) {
             <h1>{node.sousTitre}</h1>
           </div>
           
-          {/* <div className={container_image}></div> */}
-          <GatsbyImage alt={node.image.title} className={image} image={node.image.gatsbyImageData} />
+          <div className={container_image}>
+            <GatsbyImage alt={node.image.title} className={image} image={node.image.gatsbyImageData} />
+          </div>
           <SelectMD className={article} node={node.contenu.childMarkdownRemark} />
         </div>
       </Layout>
