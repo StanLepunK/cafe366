@@ -1,12 +1,12 @@
 /// REACT
 import * as React from "react";
-// GATSBY SHOPIFY REACT STARTER
+// GATSBY
+import { graphql } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
+// CAFE 366
 import { Layout } from "../../components/layout/layout";
 import { SelectMD } from "../../components/markdown";
-// gatsby
-import { graphql } from "gatsby";
-
-import { container, article } from "./misc_page.module.css";
+import { container, container_image, image, article } from "./misc_page.module.css";
 
 export default function Page({data}) {
   const brownser_is = typeof window !== "undefined";
@@ -20,7 +20,13 @@ export default function Page({data}) {
     return (
       <Layout>
         <div className={container}>
-        <SelectMD className={article} node={node.contenu.childMarkdownRemark} />
+          <div className={article}>
+            <h1>{node.sousTitre}</h1>
+          </div>
+          
+          {/* <div className={container_image}></div> */}
+          <GatsbyImage alt={node.image.title} className={image} image={node.image.gatsbyImageData} />
+          <SelectMD className={article} node={node.contenu.childMarkdownRemark} />
         </div>
       </Layout>
     );
@@ -35,6 +41,7 @@ export const query = graphql`
     contentfulPageSimple(id: {eq: $id}) {
       id
       titre
+      sousTitre
       contenu {
         childMarkdownRemark {
           html
@@ -44,7 +51,8 @@ export const query = graphql`
         }
       }
       image {
-        gatsbyImageData
+        title
+        gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
       }
     }
   }

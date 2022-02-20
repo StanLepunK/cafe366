@@ -1,3 +1,8 @@
+/**
+ * MENU CONTENT
+ * 2022-2022
+ * v 0.1.1
+*/
 // REACT
 import * as React from "react";
 import { useState } from "react";
@@ -38,7 +43,7 @@ function RenderBig() {
         {prods}
       </Link>
       {GetPages().map((elem) => {
-        return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+        return <LinkMenu id={elem.id} path={"/misc/"} title={elem.menu} />;
       })}
       <div></div>
     </>)

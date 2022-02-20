@@ -35,27 +35,29 @@ export function Header() {
    *  https://www.joshwcomeau.com/react/persisting-react-state-in-localstorage/
    */
 
+    {/* <Link to="/search" className={searchButton}>
+    <SearchIcon />
+  </Link> */}
+
+  // return (
+  //   <div className={container}>
+  //     <div style={{maxWidth: "640px", width: "100%", margin: "0 auto"}}>truc machin bidule pas chouette</div>
+  //   </div>
+  // );
+
   return (
     <>
-      <div>
         <div className={container}>
           {/* barre de navigation */}
           <header className={header}>
             <Logo classNameContainer={logo}/>
-
-            {/* REASEARH */}
-            {/* <Link to="/search" className={searchButton}>
-              <SearchIcon />
-            </Link> */}
             <CartButton quantity={quantity} classNameContainer={cart_container} classNamePicto={cart_picto}/>
             <Menu/>
           </header>
-          
           <Select show={loading || did_just_add_to_cart} >
             <SelectAnimation  just_add={did_just_add_to_cart}/>
           </Select>
         </div>
-      </div>
     </>
   );
 }

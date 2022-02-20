@@ -1,21 +1,49 @@
+/*
+* PAGE CONTENTFUL DESIGN
+* 2022-2022
+* v 0.1.0
+*/ 
+
+.container {
+  background: white;
+}
+
+.container_image {
+  width: var(--width_max);
+  padding-top: var(--size_gutter);
+  padding-bottom: var(--size_gutter_x2);
+
+}
+
+.image {
+  width: var(--width_max);
+  height: calc(var(--height_header) * 3);
+}
+
 .article {
   font-size: var(--text-lg);
   line-height: 130%;
   color: var(--orange_366);
   background: white;
   margin: 0 auto;
-  padding: var(--size_gutter_x2);
-  /* padding: 2em; */
-  max-width: var(--width_max);
+  /* PADDING */
+  padding-bottom: var(--space-md);
+  padding-top: var(--size_gutter);
+  padding-left: var(--size_gutter_x2);
+  padding-right: var(--size_gutter_x2);
 
+  max-width: var(--width_max);
   text-align: justify;
+  /* border: solid 1px var(--orange_366);; */
 }
 
 .article h1,
 .article h2 {
   font-size: var(--text-2xl);
   font-weight: var(--semibold);
-  margin-top: var(--space-3xl);
+  /* margin-top: var(--space-3xl); */
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
 
 .article h3,
@@ -25,10 +53,8 @@
   font-size: var(--text-prose);
   font-weight: var(--semibold);
   margin-bottom: 0.5em;
-  margin-top: 1em;
+  margin-top: 0.5em;
 }
 
 
-.container {
-  background: white;
-}
+

@@ -16,9 +16,12 @@
 
 /* GLOBAL ARCHITECTURE */
 .header {
+  /* position: relative; */
   display: grid;
-  width: 100%;
+
   max-width: var(--width_max);
+  margin: 0 auto;
+  width: 100%;
   /* max-width: var(--layout_max); */
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr;
@@ -29,6 +32,12 @@
 /* Ici, je ne comprends pas bien à quoi cela sert */
 .header::after {
   grid-area: menu_small;
+  /* content: "";
+  display: block;
+  width: var(--space-2xl);
+  z-index: 1;
+  align-self: stretch;
+  justify-self: flex-end; */
 }
 
 
@@ -50,21 +59,10 @@
 }
 
 .cart_picto {
-  /* display: flex; */
-  /* display: inline-block; */
-  
   width: var(--size_cart);
   height: var(--size_cart);
-  /* justify-content: center; */
   transform: translatey(3px);
-  /* padding-bottom: var(--space-sm); */
   margin: 0 auto;
-  
-  /* vertical-align: middle; */
-  /* text-align: center; */
-  
-  /* align-items: center; */
-  /* place-items: center; */
   /* border: solid 1px white; */
 }
 
@@ -99,10 +97,6 @@
 }
 
 
-
-
-
-
 @media (min-width: 640px) {
   .header {
     grid-template-areas: "logo menu_big cart";
@@ -111,11 +105,5 @@
 
   .header::after {
     grid-area: menu_big;
-  }
-
-  .menu_big {
-    width: stretch;
-    /* width: calc(var(--layout_max) - var(--size_picto_header) - var(--size_picto_header)); */
-    /* border: solid 1px white; */
   }
 }

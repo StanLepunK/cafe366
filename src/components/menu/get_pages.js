@@ -12,6 +12,8 @@ function build_list(edges) {
   for (let i = 0; i < edges.length; i++) {
     const obj = {
       titre: edges[i].node.titre,
+      menu: edges[i].node.menu,
+      sous_titre: edges[i].node.sousTitre,
       id: edges[i].node.id,
     };
     buf.push(obj);
@@ -29,6 +31,8 @@ export default function GetPages() {
 						node {
               id
 							titre
+              menu
+              sousTitre
 						}
 					}
         }
