@@ -39,12 +39,6 @@ export function Header() {
     <SearchIcon />
   </Link> */}
 
-  // return (
-  //   <div className={container}>
-  //     <div style={{maxWidth: "640px", width: "100%", margin: "0 auto"}}>truc machin bidule pas chouette</div>
-  //   </div>
-  // );
-
   return (
     <>
         <div className={container}>

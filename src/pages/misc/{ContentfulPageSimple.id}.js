@@ -58,3 +58,6 @@ export const query = graphql`
     }
   }
 `;
+
+// gatsbyImageData(aspectRatio: 1, placeholder: BLURRED, width: 640)
+// gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)

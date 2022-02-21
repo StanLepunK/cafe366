@@ -1,7 +1,7 @@
 /*
 * PAGE CONTENTFUL DESIGN
 * 2022-2022
-* v 0.1.0
+* v 0.1.1
 */ 
 
 .container {
@@ -9,14 +9,12 @@
 }
 
 .container_image {
-  /* width: var(--width_max); */
-  /* padding-top: var(--size_gutter); */
   padding-bottom: var(--space-md);
-
+  margin : 0 var(--size_gutter_x2);
 }
 
 .image {
-  width: var(--width_max);
+  max-width:var(--width_max);
   height: calc(var(--height_header) * 3);
 }
 
