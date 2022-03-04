@@ -15,14 +15,14 @@ export default function Page({data}) {
     localStorage.setItem("lang", "fr");
   }
 
-  const node = data.contentfulPageSimple;
+  const node = data.contentfulPage;
 
   if (node.contenu !== undefined) {
     return (
       <Layout>
         <div className={container}>
           <div className={article}>
-            <h1>{node.titre}</h1>
+            <h1>{node.sousTitre}</h1>
           </div>
           
           <div className={container_image}>
@@ -40,8 +40,9 @@ export default function Page({data}) {
 
 export const query = graphql`
   query($id: String!) {
-    contentfulPageSimple(id: {eq: $id}) {
+    contentfulPage(id: {eq: $id}) {
       titre
+      sousTitre
       contenu {
         childMarkdownRemark {
           html

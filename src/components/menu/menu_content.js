@@ -43,7 +43,13 @@ function RenderBig() {
         {prods}
       </Link>
       {GetPages().map((elem) => {
-        return <LinkMenu id={elem.id} path={"/misc/"} title={elem.menu} />;
+        if(elem.menu !== undefined) {
+          return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.menu} />;
+          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.menu} />;
+        } else if(elem.titre !== undefined) {
+          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+          return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.titre} />;
+        }
       })}
       <div></div>
     </>)
@@ -69,7 +75,14 @@ function RenderSmall() {
         {prods}
       </Link>
       {GetPages().map((elem) => {
-        return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+        // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+        if(elem.menu !== undefined) {
+          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.menu} />;
+          return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.menu} />;
+        } else if(elem.titre !== undefined) {
+          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
+          return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.titre} />;
+        }
       })}
     </div>
   )
