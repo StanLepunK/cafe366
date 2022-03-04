@@ -50,7 +50,7 @@ export default function GetPages() {
 // 				allContentfulTest {
 //           edges {
 // 						node {
-//               id
+//              id
 // 							titre
 // 						}
 // 					}
@@ -59,75 +59,5 @@ export default function GetPages() {
 //     `
 //   );
 //   const [elems, set_elems] = useState(build_list(all.allContentfulTest.edges));
-//   return elems;
-// }
-
-// // *** PAGE SIMPLE FOR TEST ***
-// export default function GetPages() {
-//   const all = useStaticQuery(
-//     graphql`
-//       query {
-// 				allContentfulPageSimple {
-//           edges {
-// 						node {
-//               id
-// 							titre
-// 						}
-// 					}
-//         }
-//       }
-//     `
-//   );
-//   const [elems, set_elems] = useState(build_list(all.allContentfulPageSimple.edges));
-//   return elems;
-// }
-
-
-
-// // *** PAGE ***
-// export default function GetPages() {
-//   const all = useStaticQuery(
-//     graphql`
-//       query {
-// 				allContentfulPage {
-//           edges {
-// 						node {
-//               id
-// 							titre
-//               menu
-//               sousTitre
-// 						}
-// 					}
-//         }
-//       }
-//     `
-//   );
-//   const [elems, set_elems] = useState(build_list(all.allContentfulPage.edges));
-//   return elems;
-// }
-
-
-
-
-
-// export default function GetPages() {
-//   const all = useStaticQuery(
-//     graphql`
-//       query {
-// 				allContentfulPageSimple {
-//           edges {
-// 						node {
-//               id
-// 							titre
-//               menu
-//               sousTitre
-// 						}
-// 					}
-//         }
-//       }
-//     `
-//   );
-//   // don't remove the unused function from useState that's cause undefined missing
-//   const [elems, set_elems] = useState(build_list(all.allContentfulPageSimple.edges));
 //   return elems;
 // }

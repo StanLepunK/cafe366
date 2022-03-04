@@ -1,7 +1,7 @@
 /**
  * MENU CONTENT
  * 2022-2022
- * v 0.1.1
+ * v 0.1.2
 */
 // REACT
 import * as React from "react";
@@ -21,7 +21,6 @@ import LinkMenu from "./link_menu";
  * But there is a problem of display the menu when there is a <div></div> instead <Fragment></Fragment> for the big Menu
  * 
  */
-
 
 function RenderBig() {
   const prods = useState(content_by_lang(content.collection, "all products", "ALL PRODUCTS"));
@@ -45,9 +44,7 @@ function RenderBig() {
       {GetPages().map((elem) => {
         if(elem.menu !== undefined) {
           return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.menu} />;
-          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.menu} />;
         } else if(elem.titre !== undefined) {
-          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
           return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.titre} />;
         }
       })}
@@ -75,12 +72,9 @@ function RenderSmall() {
         {prods}
       </Link>
       {GetPages().map((elem) => {
-        // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
         if(elem.menu !== undefined) {
-          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.menu} />;
           return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.menu} />;
         } else if(elem.titre !== undefined) {
-          // return <LinkMenu id={elem.id} path={"/misc/"} title={elem.titre} />;
           return <LinkMenu id={elem.titre} path={"/misc/"} title={elem.titre} />;
         }
       })}

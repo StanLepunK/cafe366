@@ -1,6 +1,6 @@
 {
   "name": "cafe366",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "description": "Boutique de cafés de spécialités",
   "author": "Knupel <stan@knupel.art>",
@@ -9,6 +9,8 @@
     "gatsby",
     "shopify",
     "coffee",
+    "café",
+    "boutique",
     "ecommerce",
     "e-commerce"
   ],
