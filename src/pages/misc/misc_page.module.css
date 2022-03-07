@@ -58,5 +58,24 @@
   margin-top: 0.5em;
 }
 
+.article li {
+  list-style-position: inside;
+}
+
+
+.article a {
+  text-decoration: underline;
+}
+/* .article a:visited {
+  text-decoration: none;
+}
+
+.article a:hover {
+  text-decoration: underline;
+}
+
+.article a:active {
+  text-decoration: underline;
+} */
 
 
