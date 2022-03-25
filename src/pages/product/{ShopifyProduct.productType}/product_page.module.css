@@ -34,14 +34,17 @@
   padding-bottom: var(--space-2xl);
 }
 
-.productImageList {
+.product_img_list {
   display: flex;
-  overflow-x: auto;
+  flex-direction: column;
+  /* overflow-x: auto; */
 }
 
-.productImageListItem {
+.product_img_list_item {
   display: flex;
+
   flex: 0 0 100%;
+  padding-bottom: var(--space-2xl);
   white-space: nowrap;
 }
 

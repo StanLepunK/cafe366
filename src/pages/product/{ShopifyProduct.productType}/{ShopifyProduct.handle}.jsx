@@ -34,14 +34,16 @@ import {
   container,
   title_design,
   prod_img_wrapper,
-  productImageList,
-  productImageListItem,
+  product_img_list,
+  product_img_list_item,
   scrollForMore,
   noImagePreview,
   priceValue,
   collection_link,
   prod_description,
 } from "./product_page.module.css";
+
+
 
 
 
@@ -128,31 +130,7 @@ export default function Product({ data: { product, suggestions } }) {
         <div className={prod_box}>
           {hasImages && (
             <div className={prod_img_wrapper}>
-              <div
-                role="group"
-                aria-label="gallery"
-                aria-describedby="instructions"
-              >
-                <ul className={productImageList}>
-                  {images.map((image, index) => (
-                    <li
-                      key={`product-image-${image.id}`}
-                      className={productImageListItem}
-                    >
-                      <GatsbyImage
-                        objectFit="contain"
-                        loading={index === 0 ? "eager" : "lazy"}
-                        alt={
-                          image.altText
-                            ? image.altText
-                            : `Product Image of ${title} #${index + 1}`
-                        }
-                        image={image.gatsbyImageData}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ShowAllImagesProduct images={images} title={title}/>
               {hasMultipleImages && (
                 <div className={scrollForMore} id="instructions">
                   <span aria-hidden="true">←</span> scroll for more{" "}
@@ -189,6 +167,35 @@ export default function Product({ data: { product, suggestions } }) {
 }
 
 // OTHER
+function ShowAllImagesProduct({images, title}) {
+  console.log("images length",images.length);
+  return(<div
+    role="group"
+    aria-label="gallery"
+    aria-describedby="instructions"
+  >
+    <ul className={product_img_list}>
+      {images.map((image, index) => (
+        <li
+          key={`product-image-${image.id}`}
+          className={product_img_list_item}
+        >
+          <GatsbyImage
+            objectFit="contain"
+            loading={index === 0 ? "eager" : "lazy"}
+            alt={
+              image.altText
+                ? image.altText
+                : `Product Image of ${title} #${index + 1}`
+            }
+            image={image.gatsbyImageData}
+          />
+        </li>
+      ))}
+    </ul>
+  </div>);
+}
+
 // https://www.npmjs.com/package/sanitize-html#what-are-the-default-options
 // https://stackoverflow.com/questions/59467152/how-to-render-html-code-in-strings-of-a-gatsby-config-file
 function Description({className, content_html}) {
