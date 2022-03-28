@@ -1,6 +1,6 @@
 /**
  * Fiche produit
- * v 0.2.0
+ * v 0.3.0
  * 2021-2022
  *
  */
@@ -24,10 +24,14 @@ import { Seo } from "../../../components/seo";
 // The Search part don't work must be work on it for the future
 // import { MetaSection } from "./meta_section.js"; 
 // APP
-import { formatPrice } from "../../../utils/format_price";
+
 // PRODUCT 366
 import { AddUnits } from "../../../components/product/add_units.js";
 import { Selection } from "../../../components/product/selection.js";
+
+// UTILS
+import { formatPrice } from "../../../utils/format_price";
+import { Get_width } from "../../../utils/canvas";
 
 import {
   prod_box,
@@ -49,30 +53,25 @@ import {
 
 export default function Product({ data: { product, suggestions } }) {
   const {
-    options,
     variants,
     variants: [initialVariant],
     priceRangeV2,
     title,
     descriptionHtml,
-    images,
     images: [firstImage],
   } = product;
+  
   const { client } = useContext(ContextStore);
-
-  const [variant, setVariant] = useState({ ...initialVariant });
-
-  const productVariant =
-    client.product.helpers.variantForOptions(product, variant) || variant;
-
-  const [available, setAvailable] = useState(productVariant.availableForSale);
+  const [variant, set_variant] = useState({ ...initialVariant });
+  const product_variant = client.product.helpers.variantForOptions(product, variant) || variant;
+  const [available, setAvailable] = useState(product_variant.availableForSale);
 
   const checkAvailablity = useCallback(
     (productId) => {
       client.product.fetch(productId).then((fetchedProduct) => {
         const result =
           fetchedProduct?.variants.filter(
-            (variant) => variant.id === productVariant.storefrontId
+            (variant) => variant.id === product_variant.storefrontId
           ) ?? [];
 
         if (result.length > 0) {
@@ -80,42 +79,31 @@ export default function Product({ data: { product, suggestions } }) {
         }
       });
     },
-    [productVariant.storefrontId, client.product]
+    [product_variant.storefrontId, client.product]
   );
 
-  const handleOptionChange = (index, event) => {
+  const change_option = (index, event) => {
     const value = event.target.value;
-
-    if (value === "") {
-      return;
-    }
-
+    if (value === "") { return; }
     const currentOptions = [...variant.selectedOptions];
-
     currentOptions[index] = {
       ...currentOptions[index],
       value,
     };
-
     const selectedVariant = variants.find((variant) => {
       return isEqual(currentOptions, variant.selectedOptions);
     });
-
-    setVariant({ ...selectedVariant });
+    set_variant({ ...selectedVariant });
   };
 
   useEffect(() => {
     checkAvailablity(product.storefrontId);
-  }, [productVariant.storefrontId, checkAvailablity, product.storefrontId]);
+  }, [product_variant.storefrontId, checkAvailablity, product.storefrontId]);
 
   const price = formatPrice(
     priceRangeV2.minVariantPrice.currencyCode,
     variant.price
   );
-
-  const hasVariants = variants.length > 1;
-  const hasImages = images.length > 0;
-  const hasMultipleImages = true || images.length > 1;
 
   return (
     <Layout>
@@ -127,48 +115,84 @@ export default function Product({ data: { product, suggestions } }) {
         />
       ) : undefined}
       <div className={container}>
-        <div className={prod_box}>
-          {hasImages && (
-            <div className={prod_img_wrapper}>
-              <ShowAllImagesProduct images={images} title={title}/>
-              {hasMultipleImages && (
-                <div className={scrollForMore} id="instructions">
-                  <span aria-hidden="true">←</span> scroll for more{" "}
-                  <span aria-hidden="true">→</span>
-                </div>
-              )}
-            </div>
-          )}
-          {!hasImages && (
-            <span className={noImagePreview}>No Preview image</span>
-          )}
-          <div>
-            <div className={collection_link}>
-              <ChevronIcon size={20} />
-              <Link to={product.productTypeSlug}>{product.productType}</Link>
-              
-            </div>
-            <h1 className={title_design}>{title}</h1>
-            <Order 
-              priceValue={priceValue}
-              price={price}
-              hasVariants={hasVariants}
-              options={options}
-              handleOptionChange={handleOptionChange}
-              productVariant={productVariant}
-              available={available}
-            />
-            <Description className={prod_description} content_html={descriptionHtml}></Description>
-          </div>
-        </div>
+        <OrganizeDisplay product={product} available={available} price={price} change_option={change_option} product_variant={product_variant} />
       </div>
     </Layout>
   );
 }
 
+
+
+
 // OTHER
+function OrganizeDisplay({product, available, price, change_option, product_variant}) {
+  if(Get_width() >= 640) {
+    return(
+      <div className={prod_box}>
+        <ShowImages product={product}/>
+        <div>
+          <HeaderProduct product={product} available={available} price={price} change_option={change_option} product_variant={product_variant}/>
+          <Description className={prod_description} content_html={product.descriptionHtml}></Description>
+        </div>
+      </div>
+    )
+  } else {
+    return(
+      <div className={prod_box}>
+        <HeaderProduct product={product} available={available} price={price} change_option={change_option} product_variant={product_variant}/>
+        <ShowImages product={product}/>
+        <Description className={prod_description} content_html={product.descriptionHtml}></Description>
+      </div>
+    )
+  }
+}
+
+function ShowImages({product}) {
+  const hasImages = product.images.length > 0;
+  const hasMultipleImages = true || product.images.length > 1;
+  return (<div>
+    {hasImages && (
+      <div className={prod_img_wrapper}>
+        <ShowAllImagesProduct images={product.images} title={product.title}/>
+        {hasMultipleImages && (
+          <div className={scrollForMore} id="instructions">
+            <span aria-hidden="true">←</span> scroll for more{" "}
+            <span aria-hidden="true">→</span>
+          </div>
+        )}
+      </div>
+    )}
+    {!hasImages && (
+      <span className={noImagePreview}>No Preview image</span>
+    )}
+  </div>)
+}
+
+
+function HeaderProduct({product, available, price, change_option, product_variant}) {
+  const hasVariants = product.variants.length > 1;
+
+  return(
+    <div>
+      <div className={collection_link}>
+      <ChevronIcon size={20} />
+      <Link to={product.productTypeSlug}>{product.productType}</Link> 
+    </div>
+    <h1 className={title_design}>{product.title}</h1>
+    <Order 
+      priceValue={priceValue}
+      price={price}
+      hasVariants={hasVariants}
+      options={product.options}
+      handleOptionChange={change_option}
+      productVariant={product_variant}
+      available={available}
+    />
+  </div>
+  );
+}
+
 function ShowAllImagesProduct({images, title}) {
-  console.log("images length",images.length);
   return(<div
     role="group"
     aria-label="gallery"
@@ -208,12 +232,13 @@ function Description({className, content_html}) {
 
 
 function Order(props) {
-  return(<>
-  <h2 className={props.priceValue}>
-    <span>{props.price}</span>
-  </h2>
-  <Selection hasVariants={props.hasVariants} options={props.options} handleOptionChange={props.handleOptionChange}/>
-  <AddUnits productVariant= {props.productVariant} available={props.available}/>
+  return(
+  <>
+    <h2 className={props.priceValue}>
+      <span>{props.price}</span>
+    </h2>
+    <Selection hasVariants={props.hasVariants} options={props.options} handleOptionChange={props.handleOptionChange}/>
+    <AddUnits productVariant= {props.productVariant} available={props.available}/>
   </>)
 }
 

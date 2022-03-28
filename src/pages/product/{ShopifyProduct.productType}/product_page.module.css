@@ -1,6 +1,6 @@
 /**
  * FICHE PRODUIT DESIGN
- * v 0.1.1
+ * v 0.1.2
  * 2021-2022
  *
  */
@@ -25,7 +25,6 @@
 
 .prod_description {
   font-size: var(--text-prose);
-  margin-top: var(--space-lg);
   /* border: solid 1px red; */
 }
 
@@ -37,15 +36,16 @@
 .product_img_list {
   display: flex;
   flex-direction: column;
-  /* overflow-x: auto; */
+  /* border: solid 1px black; */
 }
 
 .product_img_list_item {
   display: flex;
-
   flex: 0 0 100%;
-  padding-bottom: var(--space-2xl);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
   white-space: nowrap;
+  /* border: solid 1px red; */
 }
 
 .scrollForMore {
@@ -108,9 +108,19 @@
   .prod_box {
     grid-template-columns: 1fr 2fr;
   }
+  
   .addToCartStyle {
     grid-template-columns: min-content max-content;
   }
+
+  .product_img_list_item {
+    padding-top: 0;
+  }
+
+  .prod_description {
+    margin-top: var(--space-lg);
+  }
+
 }
 
 @media (min-width: 1024px) {

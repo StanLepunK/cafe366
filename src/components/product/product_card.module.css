@@ -1,10 +1,10 @@
 /**
  * CARD PRODUCT DESIGN
  *  2021-2022
- * v 0.1.0
+ * v 0.1.1
  * */
  .productCardStyle {
-  max-width: 400px;
+  max-width: 600px;
   cursor: pointer;
   text-decoration: none;
   padding-bottom: var(--space-md);
@@ -40,4 +40,10 @@
 .productVendorStyle {
   font-size: var(--text-sm);
   color: var(--text-color-secondary);
+}
+
+@media (min-width: 640px) {
+  .productCardStyle {
+    max-width: 400px;
+  }
 }
