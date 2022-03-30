@@ -28,6 +28,8 @@ import { Seo } from "../../../components/seo";
 // PRODUCT 366
 import { AddUnits } from "../../../components/product/add_units.js";
 import { Selection } from "../../../components/product/selection.js";
+import { content_by_lang } from "../../../utils/misc";
+import content from "../../../../media/json/content.json";
 
 // UTILS
 import { formatPrice } from "../../../utils/format_price";
@@ -48,14 +50,10 @@ import {
 } from "./product_page.module.css";
 
 
-
-
-
 export default function Product({ data: { product, suggestions } }) {
   const {
     variants,
     variants: [initialVariant],
-    priceRangeV2,
     title,
     descriptionHtml,
     images: [firstImage],
@@ -63,10 +61,13 @@ export default function Product({ data: { product, suggestions } }) {
   
   const { client } = useContext(ContextStore);
   const [variant, set_variant] = useState({ ...initialVariant });
-  const product_variant = client.product.helpers.variantForOptions(product, variant) || variant;
-  const [available, setAvailable] = useState(product_variant.availableForSale);
+  const [variant_ref, set_variant_ref] = useState(variant);
 
-  const checkAvailablity = useCallback(
+  const product_variant = client.product.helpers.variantForOptions(product, variant) || variant;
+  const [stock_is, set_stock] = useState(product_variant.availableForSale);
+  const [combo_is, set_combo] = useState(true);
+
+  const check_stock = useCallback(
     (productId) => {
       client.product.fetch(productId).then((fetchedProduct) => {
         const result =
@@ -75,35 +76,54 @@ export default function Product({ data: { product, suggestions } }) {
           ) ?? [];
 
         if (result.length > 0) {
-          setAvailable(result[0].available);
+          set_stock(result[0].available);
         }
       });
     },
     [product_variant.storefrontId, client.product]
   );
 
+  /**
+   * 
+   * this fonction is passed to set variant
+   */
   const change_option = (index, event) => {
     const value = event.target.value;
-    if (value === "") { return; }
-    const currentOptions = [...variant.selectedOptions];
-    currentOptions[index] = {
-      ...currentOptions[index],
-      value,
-    };
-    const selectedVariant = variants.find((variant) => {
-      return isEqual(currentOptions, variant.selectedOptions);
-    });
-    set_variant({ ...selectedVariant });
+    if (value === "") { 
+      return; 
+    }
+    console.log("000");
+    console.log("variant.selectedOptions",variant.selectedOptions);
+    if(variant.selectedOptions !== undefined) {
+      const current_options = [...variant.selectedOptions];
+      current_options[index] = {
+        ...current_options[index],
+        value,
+      };
+      const selected_variant = variants.find((variant) => {
+        return isEqual(current_options, variant.selectedOptions);
+      });
+      set_variant({...selected_variant});
+      set_variant_ref(variant);
+    } else {
+      set_variant(variant_ref);
+      // set_variant_ref(null);
+    }
   };
 
   useEffect(() => {
-    checkAvailablity(product.storefrontId);
-  }, [product_variant.storefrontId, checkAvailablity, product.storefrontId]);
+    check_stock(product.storefrontId);
+    if(variant.price !== undefined) {
+      set_combo(true);
+    } else {
+      set_combo(false);
+    }
+  },[product_variant.storefrontId, check_stock, product.storefrontId]);
 
-  const price = formatPrice(
-    priceRangeV2.minVariantPrice.currencyCode,
-    variant.price
-  );
+  console.log("111");
+  console.log("variant.price", variant.price);
+  console.log("combo_is", combo_is);
+
 
   return (
     <Layout>
@@ -115,7 +135,10 @@ export default function Product({ data: { product, suggestions } }) {
         />
       ) : undefined}
       <div className={container}>
-        <OrganizeDisplay product={product} available={available} price={price} change_option={change_option} product_variant={product_variant} />
+        <OrganizeDisplay product={product} 
+                          stock_is={stock_is} combo_is={combo_is} 
+                          variant_price={variant.price} product_variant={product_variant} 
+                          change_option={change_option}/>
       </div>
     </Layout>
   );
@@ -125,13 +148,16 @@ export default function Product({ data: { product, suggestions } }) {
 
 
 // OTHER
-function OrganizeDisplay({product, available, price, change_option, product_variant}) {
+function OrganizeDisplay({product, 
+                          stock_is, combo_is, 
+                          variant_price, product_variant, 
+                          change_option}) {
   if(Get_width() >= 640) {
     return(
       <div className={prod_box}>
         <ShowImages product={product}/>
         <div>
-          <HeaderProduct product={product} available={available} price={price} change_option={change_option} product_variant={product_variant}/>
+          <HeaderProduct product={product} stock_is={stock_is} combo_is={combo_is} variant_price={variant_price} product_variant={product_variant} change_option={change_option} />
           <Description className={prod_description} content_html={product.descriptionHtml}></Description>
         </div>
       </div>
@@ -139,7 +165,7 @@ function OrganizeDisplay({product, available, price, change_option, product_vari
   } else {
     return(
       <div className={prod_box}>
-        <HeaderProduct product={product} available={available} price={price} change_option={change_option} product_variant={product_variant}/>
+        <HeaderProduct product={product} stock_is={stock_is} combo_is={combo_is} variant_price={variant_price} product_variant={product_variant} change_option={change_option} />
         <ShowImages product={product}/>
         <Description className={prod_description} content_html={product.descriptionHtml}></Description>
       </div>
@@ -169,9 +195,7 @@ function ShowImages({product}) {
 }
 
 
-function HeaderProduct({product, available, price, change_option, product_variant}) {
-  const hasVariants = product.variants.length > 1;
-
+function HeaderProduct({product, stock_is, combo_is, variant_price, product_variant, change_option}) {
   return(
     <div>
       <div className={collection_link}>
@@ -179,14 +203,13 @@ function HeaderProduct({product, available, price, change_option, product_varian
       <Link to={product.productTypeSlug}>{product.productType}</Link> 
     </div>
     <h1 className={title_design}>{product.title}</h1>
-    <Order 
-      priceValue={priceValue}
-      price={price}
-      hasVariants={hasVariants}
-      options={product.options}
-      handleOptionChange={change_option}
-      productVariant={product_variant}
-      available={available}
+    <Order
+      product={product}
+      stock_is={stock_is}
+      combo_is={combo_is}
+      variant_price={variant_price}
+      product_variant={product_variant}
+      change_option={change_option}
     />
   </div>
   );
@@ -230,16 +253,42 @@ function Description({className, content_html}) {
 }
 
 
+function Order({product, stock_is, combo_is, variant_price, product_variant, change_option}) {
+  const [result, set_result] = useState(content_by_lang(content.info, "nothing", ""));
 
-function Order(props) {
-  return(
-  <>
-    <h2 className={props.priceValue}>
-      <span>{props.price}</span>
-    </h2>
-    <Selection hasVariants={props.hasVariants} options={props.options} handleOptionChange={props.handleOptionChange}/>
-    <AddUnits productVariant= {props.productVariant} available={props.available}/>
-  </>)
+  const variants_is = product.variants.length > 1;
+
+  const price = formatPrice(
+    product.priceRangeV2.minVariantPrice.currencyCode,
+    variant_price
+  );
+
+  useEffect(() => {
+    if(variant_price === undefined) {
+      set_result(content_by_lang(content.info, "nothing", ""));
+    } else {
+      set_result(price);
+    }
+  }, [variant_price])
+
+  if(!combo_is) {
+    return (<>
+      <h2 className={priceValue}>
+        <span>{result}</span>
+      </h2>
+      <Selection variants_is={variants_is} options={product.options} change_option={change_option}/>
+    </>)
+  } else {
+    return(
+      <>
+        <h2 className={priceValue}>
+          <span>{result}</span>
+        </h2>
+        <Selection variants_is={variants_is} options={product.options} change_option={change_option}/>
+        <AddUnits productVariant={product_variant} stock_is={stock_is}/>
+      </>)
+
+  }
 }
 
 

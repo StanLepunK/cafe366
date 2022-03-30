@@ -2,7 +2,7 @@
  * Fiche produit
  * SELECTION VARIANT
  * 2022-2022
- * v 0.1.0
+ * v 0.1.1
  *
  */
 // REACT
@@ -23,20 +23,23 @@ function Content({name, content}) {
 }
 
 
-export function Selection({hasVariants, options, handleOptionChange}) {
+export function Selection({variants_is, options, change_option}) {
+  // console.log("Selection() options",options);
   const grind = useState(content_by_lang(content.info, "grind", ""));
   const quantity = useState(content_by_lang(content.info, "quantity", ""));
   return ( <fieldset className={options_wrapper}>
-    {hasVariants &&
+    {variants_is &&
       options.map(({ id, name, values }, index) => (
-        <div >
+        <div>
           {index === 0 ? <div className={select_title}>{grind}</div> : <div className={select_title}>{quantity}</div>}
+          {/* {console.log("index", index)} */}
           <div className={select_variant} key={id}>
             <select
               aria-label="Variants"
-              onChange={(event) => handleOptionChange(index, event)}
+              onChange={(event) => change_option(index, event)}
             >
               {/* <option value="">{`${select} ${name}`}</option> */}
+              {/* {console.log("values", values)} */}
               {values.map((value) => (
                 <Content content={value} name={name}/>
               ))}

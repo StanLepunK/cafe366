@@ -126,6 +126,11 @@
       "label_fr": "quantité"
     },
     {
+      "name": "nothing",
+      "label_en": "not available",
+      "label_fr": "non disponible"
+    },
+    {
       "name": "calculated",
       "label_en": "calculated at the next step",
       "label_fr": "calculés à l'étape suivante"
