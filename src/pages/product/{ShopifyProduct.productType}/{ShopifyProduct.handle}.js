@@ -61,11 +61,11 @@ export default function Product({ data: { product, suggestions } }) {
   
   const { client } = useContext(ContextStore);
   const [variant, set_variant] = useState({ ...initialVariant });
-  const [variant_ref, set_variant_ref] = useState(variant);
 
   const product_variant = client.product.helpers.variantForOptions(product, variant) || variant;
   const [stock_is, set_stock] = useState(product_variant.availableForSale);
   const [combo_is, set_combo] = useState(true);
+  const [previous_options, set_previous_options] = useState(null);
 
   const check_stock = useCallback(
     (productId) => {
@@ -87,27 +87,31 @@ export default function Product({ data: { product, suggestions } }) {
    * 
    * this fonction is passed to set variant
    */
+  // console.log("000 timestamp", Date.now());
   const change_option = (index, event) => {
     const value = event.target.value;
     if (value === "") { 
       return; 
     }
-    console.log("000");
-    console.log("variant.selectedOptions",variant.selectedOptions);
+
     if(variant.selectedOptions !== undefined) {
       const current_options = [...variant.selectedOptions];
       current_options[index] = {
         ...current_options[index],
         value,
       };
+      set_previous_options(current_options);
       const selected_variant = variants.find((variant) => {
         return isEqual(current_options, variant.selectedOptions);
       });
       set_variant({...selected_variant});
-      set_variant_ref(variant);
     } else {
-      set_variant(variant_ref);
-      // set_variant_ref(null);
+      // case where the mouture is changed
+      previous_options[index].value = value;
+      const selected_variant = variants.find((variant) => {
+        return isEqual(previous_options, variant.selectedOptions);
+      });
+      set_variant({...selected_variant});
     }
   };
 
@@ -119,11 +123,6 @@ export default function Product({ data: { product, suggestions } }) {
       set_combo(false);
     }
   },[product_variant.storefrontId, check_stock, product.storefrontId]);
-
-  console.log("111");
-  console.log("variant.price", variant.price);
-  console.log("combo_is", combo_is);
-
 
   return (
     <Layout>
@@ -287,7 +286,6 @@ function Order({product, stock_is, combo_is, variant_price, product_variant, cha
         <Selection variants_is={variants_is} options={product.options} change_option={change_option}/>
         <AddUnits productVariant={product_variant} stock_is={stock_is}/>
       </>)
-
   }
 }
 
