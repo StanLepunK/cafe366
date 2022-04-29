@@ -10,9 +10,6 @@ import { quantity_design } from "./cart.module.css";
 import { Panier }  from "./../../icons/picto";
 
 
-// {quantity > 0 ? <div className={quantity_design}>{quantity}</div> : null}
-// <div className={classNameContainer}>
-
 export function CartButton({ quantity, classNameContainer, classNamePicto }) {
   return (
     <div className={classNameContainer}>

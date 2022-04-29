@@ -5,8 +5,12 @@ import { graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 // CAFE 366
 import { Layout } from "../../components/layout/layout";
-import { SelectMD } from "../../components/markdown";
-import { container, container_image, image, article } from "./misc_page.module.css";
+import { MarkdownDesign } from "../../components/markdown";
+import { container, container_image,
+          image, article } from "./misc_page.module.css";
+import { FormPro } from "../../components/form/form_pro";
+
+
 
 
 export default function Page({data}) {
@@ -16,6 +20,7 @@ export default function Page({data}) {
   }
 
   const node = data.contentfulEditorial;
+  const category = node.menu.toLowerCase();
 
   if (node.contenu !== undefined) {
     return (
@@ -28,7 +33,8 @@ export default function Page({data}) {
           <div className={container_image}>
             <GatsbyImage alt={node.image.title} className={image} image={node.image.gatsbyImageData} />
           </div>
-          <SelectMD className={article} node={node.contenu.childMarkdownRemark} />
+          {category === "pro" ? <FormPro name="truc">Un message, c'est ici..</FormPro> : null}
+          <MarkdownDesign className={article} node={node.contenu.childMarkdownRemark} />
         </div>
       </Layout>
     );
@@ -42,6 +48,7 @@ export const query = graphql`
 query($titre: String!) {
 	contentfulEditorial(titre: {eq: $titre}) {
       titre
+      menu
       sousTitre
       contenu {
         childMarkdownRemark {

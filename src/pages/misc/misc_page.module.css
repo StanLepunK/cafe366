@@ -1,7 +1,7 @@
 /*
 * PAGE CONTENTFUL DESIGN
 * 2022-2022
-* v 0.1.1
+* v 0.2.0
 */ 
 
 .container {
@@ -18,6 +18,10 @@
   height: calc(var(--height_header) * 3);
 }
 
+
+/**
+* ARTICLE
+*/
 .article {
   font-size: var(--text-lg);
   line-height: 130%;

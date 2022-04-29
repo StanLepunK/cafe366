@@ -1,3 +1,8 @@
+/**
+ * HEADER
+ * 2021-2022
+ * v 0.1.1
+ */
 // REACT
 import * as React from "react";
 import { useContext } from "react";
@@ -8,16 +13,19 @@ import { ContextStore } from "../../context/context_store";
 // CAFE 366
 import { Menu } from "./../menu/menu";
 
-import { header, container, logo, cart_container, cart_picto } from "./header.module.css";
+import {  header, container, 
+          logo, picto, 
+          cart_container, user_container } from "./header.module.css";
 import "./header.module.css";
 import SearchIcon from "./../../icons/search";
 
 import { Select, SelectAnimation } from "./select";
 
 import { CartButton } from "./../cart/cart_button";
+import { UserButton } from "./../button/user_button";
 
 // CAFE 366
-import { Logo }  from "./../../icons/picto";
+import { Logo } from "./../../icons/picto";
 
 
 export function Header() {
@@ -45,7 +53,8 @@ export function Header() {
           {/* barre de navigation */}
           <header className={header}>
             <Logo classNameContainer={logo}/>
-            <CartButton quantity={quantity} classNameContainer={cart_container} classNamePicto={cart_picto}/>
+            <UserButton classNameContainer={user_container} classNamePicto={picto}/>
+            <CartButton quantity={quantity} classNameContainer={cart_container} classNamePicto={picto}/>
             <Menu/>
           </header>
           <Select show={loading || did_just_add_to_cart} >

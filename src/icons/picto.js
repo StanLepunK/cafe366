@@ -1,3 +1,8 @@
+/**
+ * PICTO
+ * v 0.1.1
+ * 2021-2022
+ * */
 import * as React from "react";
 
 // CAFE 366
@@ -8,6 +13,7 @@ import logo_366 from "./../../media/logo/cafe366_logo_blanc.svg";
 import instagram from "./../../media/logo/instagram_2016_blanc.svg";
 import facebook from "./../../media/logo/facebook_2021_blanc.svg";
 //picto
+import user from "./../../media/picto/utilisateur_blanc.svg";
 import panier from "./../../media/picto/panier_blanc.svg";
 import tick from "./../../media/picto/tick.svg";
 
@@ -18,6 +24,10 @@ export function Panier({styleContainer, classNameContainer, classNamePicto}) {
 
 export function Logo({styleContainer, classNameContainer}) {
   return (<Picto src={logo_366} alt="café 366" to="/" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
+}
+
+export function User({styleContainer, classNameContainer}) {
+  return (<Picto src={user} alt="user" to="/user/account" styleContainer={styleContainer} classNameContainer={classNameContainer}/>)
 }
 
 export function Facebook({style, classNameContainer}) {

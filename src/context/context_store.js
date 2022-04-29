@@ -52,7 +52,6 @@ export const StoreProvider = ({ children }) => {
     if (isBrowser) {
       localStorage.setItem(localStorageKey, checkout.id);
     }
-
     setCheckout(checkout);
   };
 

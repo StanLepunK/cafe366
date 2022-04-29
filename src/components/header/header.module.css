@@ -1,7 +1,7 @@
 /**
 * HEADER DESIGN
 * 2021-2022
-* V 0.1.1
+* V 0.1.2
 */
 .container {
   display: flex;
@@ -25,7 +25,7 @@
   /* max-width: var(--layout_max); */
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr;
-  grid-template-areas: "logo menu_small cart";
+  grid-template-areas: "logo menu_small user cart";
   /* border: solid 1px white; */
 }
 
@@ -58,7 +58,15 @@
   /* border: solid 1px white; */
 }
 
-.cart_picto {
+.user_container {
+  grid-area: user;
+  width: var(--size_picto_header);
+  height: var(--size_picto_header);
+  place-items: center;
+  /* border: solid 1px white; */
+}
+
+.picto {
   width: var(--size_cart);
   height: var(--size_cart);
   transform: translatey(3px);
@@ -99,7 +107,7 @@
 
 @media (min-width: 640px) {
   .header {
-    grid-template-areas: "logo menu_big cart";
+    grid-template-areas: "logo menu_big user cart";
     grid-gap: var(--size-gap);
   }
 
