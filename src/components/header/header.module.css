@@ -25,7 +25,8 @@
   /* max-width: var(--layout_max); */
   padding: var(--size-gap) var(--size-gutter);
   grid-template-columns: var(--size-input) 1fr;
-  grid-template-areas: "logo menu_small user cart";
+  grid-template-areas: "logo menu_small cart";
+  /* grid-template-areas: "logo menu_small user cart"; */
   /* border: solid 1px white; */
 }
 
@@ -107,7 +108,8 @@
 
 @media (min-width: 640px) {
   .header {
-    grid-template-areas: "logo menu_big user cart";
+    grid-template-areas: "logo menu_big cart";
+    /* grid-template-areas: "logo menu_big user cart"; */
     grid-gap: var(--size-gap);
   }
 

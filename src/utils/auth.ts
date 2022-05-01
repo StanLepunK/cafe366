@@ -1,6 +1,6 @@
 /**
  *  AUTH
- * v 0.1.0
+ * v 0.1.1
  * 2019-2022
  * */
 
@@ -47,7 +47,7 @@ export const logout = () => {
 }
  
  // cb is for callback
- const set_session = (cb = () => {}) => (err, authResult) => {
+ const set_session = (cb = () => {}) => (err : any, authResult : any) => {
 	 if (err) {
 		 if (err.error === "login_required") {
 			 login()
@@ -57,7 +57,7 @@ export const logout = () => {
 		 tokens.idToken = authResult.idToken
 		 tokens.accessToken = authResult.accessToken
  
-		 auth.client.userInfo(tokens.accessToken, (_err, userProfile) => {
+		 auth.client.userInfo(tokens.accessToken, (_err : any, userProfile : any) => {
 			 user = userProfile
 			 window.localStorage.setItem("isLoggedIn", true)
  
