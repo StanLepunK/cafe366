@@ -53,7 +53,7 @@ export function Header() {
           {/* barre de navigation */}
           <header className={header}>
             <Logo classNameContainer={logo}/>
-            {/* <UserButton classNameContainer={user_container} classNamePicto={picto}/> */}
+            <UserButton classNameContainer={user_container} classNamePicto={picto}/>
             <CartButton quantity={quantity} classNameContainer={cart_container} classNamePicto={picto}/>
             <Menu/>
           </header>

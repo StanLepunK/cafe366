@@ -11,7 +11,7 @@ import {form_pro, style_submit} from "./form.module.css";
 // https://blog.logrocket.com/how-to-style-forms-with-css-a-beginners-guide/
 
 // https://codepen.io/cojdev/pen/LMZVqj
-export function FormPro({ name, children } : any) {
+export function FormPro({ name, children }) {
   return (
     <div className={form_pro}>
       <form name={name} method="POST" data-netlify="true">

@@ -9,8 +9,8 @@ import { useStaticQuery, graphql } from "gatsby";
 import { Link } from "gatsby"
 
  // APP
- import { logout } from "./../../utils/auth"
-import { Layout } from "./../../components/layout/layout";
+ import { logout } from "../../utils/auth"
+import { Layout } from "../../components/layout/layout";
 import { container, article } from "./user.module.css";
 
 function Welcome() {
@@ -31,11 +31,11 @@ function Welcome() {
 	return(
 		<div className={container}>
 			<div className={article}>
-				{data.allContentfulUtilisateur.edges.map(({ node } : any) => (
+				{data.allContentfulUtilisateur.edges.map(({ node }) => (
           <h1>{node.titre}</h1>
         ))}
 			 <nav>
-				{data.allContentfulUtilisateur.edges.map(({ node } : any) => (
+				{data.allContentfulUtilisateur.edges.map(({ node }) => (
 					<Link to="/user/account/">{node.message}</Link>
         ))}{" | "}<a
 								 href="#logout"

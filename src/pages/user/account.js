@@ -9,26 +9,17 @@ import { Router } from "@reach/router"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby";
 // APP
-import { login, logout, auth_token_is, get_profile } from "./../../utils/auth"
-import { Layout } from "./../../components/layout/layout";
+import { login, logout, auth_token_is, get_profile } from "../../utils/auth"
+import { Layout } from "../../components/layout/layout";
 import { container, article } from "./user.module.css";
 // declare { container, article } "./user.module.css";
 
 
-const Home = ({path : string} : any) => <p>Home</p>;
-const MyAccount = ({path : string} : any) => <p>My Account</p>;
+const Home = ({path}) => <p>Home</p>;
+const MyAccount = ({path}) => <p>My Account</p>;
 
-interface UserTemp {
-  sub?: string,
-  nickname?: string,
-  name?: string,
-  picture?: string,
-  updated_at?: string,
-  email?: string,
-  email_verified?: boolean,
-}
 
-function upperCase_first(word: string | undefined) {
+function upperCase_first(word) {
   if (!word || word === undefined) {
     return word;
   }
@@ -37,7 +28,7 @@ function upperCase_first(word: string | undefined) {
 
 
 function UserAccount() {
-  const user: UserTemp = get_profile();
+  const user = get_profile();
 
   const data = useStaticQuery(
     graphql`
@@ -58,7 +49,7 @@ function UserAccount() {
   return(
 		<div className={container}>
 			<div className={article}>
-        {data.allContentfulUtilisateur.edges.map(({ node } : any) => (
+        {data.allContentfulUtilisateur.edges.map(({ node }) => (
           <h1>{node.titre} {upperCase_first(user.nickname)}</h1>
         ))}
         <nav>
