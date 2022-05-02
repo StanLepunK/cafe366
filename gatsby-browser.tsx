@@ -24,8 +24,8 @@ const SessionCheck = ({ children  } : any) => {
 export const wrapRootElement : GatsbyBrowser['wrapRootElement'] = ({ element }) => {
   return (
     <StoreProvider>
-      <SessionCheck>{element}</SessionCheck>
-      {/* {element} */}
+      {/* <SessionCheck>{element}</SessionCheck> */}
+      {element}
     </StoreProvider>)
 };
 
