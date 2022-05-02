@@ -17,14 +17,14 @@ module.exports = {
 
   plugins: [
     // FONT
-    {
-      resolve: "gatsby-plugin-web-font-loader",
-      options: {
-        typekit: {
-          id: process.env.TYPEKIT_ID,
-        },
-      },
-    },
+    // {
+    //   resolve: "gatsby-plugin-web-font-loader",
+    //   options: {
+    //     typekit: {
+    //       id: process.env.TYPEKIT_ID,
+    //     },
+    //   },
+    // },
 
     // MARKDOWN
     // https://dev.to/alexalexyang/how-to-use-markdown-in-pages-in-gatsby-5dee
