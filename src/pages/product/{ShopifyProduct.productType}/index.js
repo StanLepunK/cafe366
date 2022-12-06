@@ -33,7 +33,7 @@ export const query = graphql`
   query ($productType: String!) {
     products: allShopifyProduct(
       filter: { productType: { eq: $productType } }
-      sort: { fields: publishedAt, order: ASC }
+      sort: { publishedAt: ASC }
       limit: 24
     ) {
       nodes {

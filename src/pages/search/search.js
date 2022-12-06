@@ -44,13 +44,13 @@ import {
 } from "./search_page.module.css";
 
 export const query = graphql`
-  query {
+  {
     meta: allShopifyProduct {
-      productTypes: distinct(field: productType)
-      tags: distinct(field: tags)
-      vendors: distinct(field: vendor)
+      productTypes: distinct(field: { productType: SELECT })
+      tags: distinct(field: { tags: SELECT })
+      vendors: distinct(field: { vendor: SELECT })
     }
-    products: allShopifyProduct(limit: 24, sort: { fields: title }) {
+    products: allShopifyProduct(limit: 24, sort: {title: ASC}) {
       edges {
         node {
           title
@@ -76,6 +76,7 @@ export const query = graphql`
     }
   }
 `;
+
 
 function SearchPage({
   data: {

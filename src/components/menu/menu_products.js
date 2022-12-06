@@ -28,7 +28,7 @@ export default function MenuProducts({ className }) {
   } = useStaticQuery(graphql`
     query {
       allShopifyProduct {
-        product_type: distinct(field: productType)
+        product_type: distinct(field: { productType: SELECT })
       }
     }
   `);

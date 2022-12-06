@@ -35,10 +35,7 @@ export default function Products({ data: { products } }) {
 
 export const query = graphql`
   {
-    products: allShopifyProduct(
-      sort: { fields: publishedAt, order: ASC }
-      limit: 24
-    ) {
+    products: allShopifyProduct(sort: { publishedAt: ASC }, limit: 24) {
       nodes {
         ...ProductCard
       }
@@ -48,3 +45,4 @@ export const query = graphql`
     }
   }
 `;
+
