@@ -38,7 +38,7 @@
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-contentful": "^8.2.0",
     "gatsby-source-filesystem": "^5.2.0",
-    "gatsby-source-shopify": "6.9",
+    "gatsby-source-shopify": "^8.2.0",
     "gatsby-transformer-remark": "^6.2.0",
     "gatsby-transformer-sharp": "^5.2.0",
     "isomorphic-fetch": "^3.0.0",
